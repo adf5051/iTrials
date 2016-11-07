@@ -16,10 +16,10 @@ struct GameLayer {
     static let message   : CGFloat = 3
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene,UIGestureRecognizerDelegate {
     
     var levelNum:Int = 1
-    var sceneManager:SceneManager
+    var sceneManager:SceneManager = GameViewController()
     var spritesMoving:Bool = false
     var gameLoopPaused:Bool = true{
         didSet{

@@ -19,6 +19,9 @@
 		3FB8FAF51DD00C620038C5D5 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */; };
 		3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAF61DD00D150038C5D5 /* LevelResults.swift */; };
 		3FB8FAFC1DD0117F0038C5D5 /* MotionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAFB1DD0117F0038C5D5 /* MotionMonitor.swift */; };
+		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
+		FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */; };
+		FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		3FB8FAF61DD00D150038C5D5 /* LevelResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResults.swift; sourceTree = "<group>"; };
 		3FB8FAFB1DD0117F0038C5D5 /* MotionMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionMonitor.swift; sourceTree = "<group>"; };
+		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		3FB8FAD61DD0001E0038C5D5 /* iTrials */ = {
 			isa = PBXGroup;
 			children = (
+				FACB77F91DD01D7B00DFCD77 /* Extensions */,
 				3FB8FAFA1DD011030038C5D5 /* VC */,
 				3FB8FAF11DD000760038C5D5 /* Scenes */,
 				3FB8FAF01DD000700038C5D5 /* Utils */,
@@ -115,6 +122,16 @@
 				3FB8FADF1DD0001E0038C5D5 /* GameViewController.swift */,
 			);
 			name = VC;
+			sourceTree = "<group>";
+		};
+		FACB77F91DD01D7B00DFCD77 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */,
+				FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */,
+				FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +212,10 @@
 			files = (
 				3FB8FADE1DD0001E0038C5D5 /* GameScene.swift in Sources */,
 				3FB8FAE01DD0001E0038C5D5 /* GameViewController.swift in Sources */,
+				FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */,
 				3FB8FAFC1DD0117F0038C5D5 /* MotionMonitor.swift in Sources */,
+				FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */,
+				FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */,
 				3FB8FAF51DD00C620038C5D5 /* SceneManager.swift in Sources */,
 				3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */,
 				3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */,

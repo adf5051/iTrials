@@ -38,9 +38,9 @@ class GameViewController: UIViewController, SceneManager {
     // MARK - Scene Management -
     func loadHomeScene() {
         
-        let scene = HomeScene(size: screenSize, scaleMode: scaleMode, sceneManager: self)
+        //let scene = HomeScene(size: screenSize, scaleMode: scaleMode, sceneManager: self)
         let reveal = SKTransition.crossFade(withDuration: 1)
-        skView.presentScene(scene, transition: reveal)
+        //skView.presentScene(scene, transition: reveal)
     }
     
     func loadGameScene(levelNum: Int, totalScore: Int) {
@@ -56,9 +56,9 @@ class GameViewController: UIViewController, SceneManager {
     func loadLevelFinishScene(results: LevelResults){
         
         gameScene = nil
-        let scene = LevelFinishScene(size: screenSize, scaleMode: scaleMode, results: results, sceneManager: self)
+        //let scene = LevelFinishScene(size: screenSize, scaleMode: scaleMode, results: results, sceneManager: self)
         let reveal = SKTransition.crossFade(withDuration: 1)
-        skView.presentScene(scene, transition: reveal)
+        //skView.presentScene(scene, transition: reveal)
         
         MotionMonitor.sharedMotionMonitor.stopUpdates()
     }
@@ -66,9 +66,9 @@ class GameViewController: UIViewController, SceneManager {
     func loadGameOverScene(results: LevelResults){
         
         gameScene = nil
-        let scene = GameOverScene(size: screenSize, scaleMode: scaleMode, results: results, sceneManager: self)
+        //let scene = GameOverScene(size: screenSize, scaleMode: scaleMode, results: results, sceneManager: self)
         let reveal = SKTransition.crossFade(withDuration: 1)
-        skView.presentScene(scene, transition: reveal)
+        //skView.presentScene(scene, transition: reveal)
     }
     
     func loadCreditsScene() {
