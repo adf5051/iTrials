@@ -24,11 +24,24 @@ class HomeScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 100, height: 100))
+        
+        buttonNode.lineWidth = 5
+        buttonNode.strokeColor = SKColor.red
+        buttonNode.fillColor = SKColor.black
+        
         //label and buttons
-        let button:Button = Button()
-        button.setup(view: view, size: CGSize.init(width: 100, height: 100), lineWidth: 5, strokeColor: SKColor.red, fillColor: SKColor.blue);
+        let button:Button = Button(buttonNode)
+        button.setup();
         button.position = CGPoint(x: 0, y: 0)
+        //button.subscribeToPress(funcName: "buttonPressed", callback: buttonPressed)
+        button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
+        button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
         addChild(button)
+    }
+    
+    func buttonPressed() {
+        sceneManager.loadGameScene(levelNum: 1, totalScore: 0)
     }
     
     // TODO: change this to be work when a bitton is hit maybe
