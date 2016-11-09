@@ -13,6 +13,8 @@ class Button: SKNode {
     
     // -- MARK: Instance Variables
     
+    private var buttonUINode:SKNode!
+    
     private var pressCallbacks:[String:()->()] = [:]
     private var releaseCallbacks:[String:()->()] = [:]
     
@@ -54,6 +56,8 @@ class Button: SKNode {
         }
         zPosition = 3
         self.addChild(buttonNode)
+        self.isUserInteractionEnabled = true;
+        self.buttonUINode = buttonNode
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,7 +74,8 @@ class Button: SKNode {
     // Override the touch events to intercept touches on the button
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if pressAnimation != nil {
-            run(pressAnimation)
+            buttonUINode?.run(pressAnimation)
+            //run(pressAnimation)
         }
         
         firePressCallbacks()
@@ -78,7 +83,8 @@ class Button: SKNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if releaseAnimation != nil {
-            run(releaseAnimation)
+            buttonUINode?.run(releaseAnimation)
+            //run(releaseAnimation)
         }
         
         fireReleaseCallbacks()

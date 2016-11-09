@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class CarNode: SKSpriteNode, EventListenerNode {
+class CarNode: SKSpriteNode {
     
     func didMoveToScene() {
         

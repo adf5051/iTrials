@@ -30,6 +30,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     var lastUpdateTime:TimeInterval = 0
     var dt:TimeInterval = 0
     
+    var gasDown:Bool = false
+    var brakeDown:Bool = false
+    
     // MARK: - Initialization -
     class func loadLevel(_ levelNum: Int, size: CGSize, scaleMode:SKSceneScaleMode, totalScore: Int, sceneManager:SceneManager) -> GameScene?{
         
@@ -132,7 +135,54 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     }
     
     private func setupUI(){
+        let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
+        gasSprite.xScale = 1.5
+        gasSprite.yScale = 1.5
+        let brakeSprite = SKSpriteNode(imageNamed: "BrakePedal")
+        brakeSprite.xScale = 1.5
+        brakeSprite.yScale = 1.5
         
+        let gasButton = Button(gasSprite)
+        let brakeButton = Button(brakeSprite)
+        
+        //this will need to change to adapt to the origin of the scene later
+        gasButton.position = CGPoint(x: size.width/2-gasSprite.size.width, y: (-size.height/2) + (gasSprite.size.height/2))
+        brakeButton.position = CGPoint(x: (-size.width/2)+brakeSprite.size.width, y: (-size.height/2) + (brakeSprite.size.height/2))
+        
+        gasButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedalPressed"))
+        brakeButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedalPressed"))
+        
+        gasButton.releaseAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedal"))
+        brakeButton.releaseAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedal"))
+        
+        gasButton.subscribeToPress(funcName: "onGasPressed", callback: onGasPressed)
+        brakeButton.subscribeToPress(funcName: "onBrakePressed", callback: onBrakePressed)
+        
+        gasButton.subscribeToRelease(funcName: "onGasReleased", callback: onGasReleased)
+        brakeButton.subscribeToRelease(funcName: "onBrakeReleased", callback: onBrakeReleased)
+        
+        addChild(gasButton)
+        addChild(brakeButton)
+    }
+    
+    private func onGasPressed() {
+        gasDown = true
+        print("GO!")
+    }
+    
+    private func onGasReleased() {
+        gasDown = false
+        print("Gas Released")
+    }
+    
+    private func onBrakePressed() {
+        brakeDown = true
+        print("STOP!")
+    }
+    
+    private func onBrakeReleased() {
+        brakeDown = false
+        print("Brake Released")
     }
     
     private func setupSpritesAndPhysics(){
