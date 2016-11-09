@@ -16,7 +16,7 @@ class GameViewController: UIViewController, SceneManager {
     var gameScene: GameScene?
     var skView: SKView!
     let showDebugData = true
-    let screenSize = CGSize(width: 1080, height: 1920)
+    let screenSize = CGSize(width: 1920, height: 1080)
     let scaleMode = SKSceneScaleMode.aspectFill
     
     // MARK - Initialization -
@@ -32,7 +32,6 @@ class GameViewController: UIViewController, SceneManager {
         skView.ignoresSiblingOrder = true
         skView.showsFPS = showDebugData
         skView.showsNodeCount = showDebugData
-        print(#function)
     }
     
     // MARK - Scene Management -

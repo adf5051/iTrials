@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import SpriteKit
 
 class Button: SKNode {
@@ -43,12 +42,22 @@ class Button: SKNode {
     // Designated init. Takes a node as a the button ui and makes it a child node
     init(_ buttonNode:SKNode) {
         super.init()
-        self.addChild(buttonNode);
+        if buttonNode.parent != nil {
+            //position = buttonNode.position
+            buttonNode.removeFromParent()
+            //buttonNode.position = CGPoint.zero
+            position = CGPoint.zero
+            print(position)
+            print(buttonNode.position)
+            print(buttonNode.xScale)
+            
+        }
+        zPosition = 3
+        self.addChild(buttonNode)
     }
     
-    // required init
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     // setup function to be used with scene editor created buttons
