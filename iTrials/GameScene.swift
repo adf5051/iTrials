@@ -9,6 +9,15 @@
 import SpriteKit
 import GameplayKit
 
+struct PhysicsCategory {
+    static let None: UInt32 = 0
+    static let Cat: UInt32 = 0b1 // 1
+    static let Block: UInt32 = 0b10 // 2
+    static let Bed: UInt32 = 0b100 // 4
+    static let Edge: UInt32 = 0b1000 // 8
+    static let Label: UInt32 = 0b10000 // 16
+}
+
 struct GameLayer {
     static let background: CGFloat = 0
     static let hud       : CGFloat = 1
@@ -33,6 +42,10 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     var gasDown:Bool = false
     var brakeDown:Bool = false
     
+    var carNode:CarNode!
+    
+    var playableRect:CGRect!
+    
     // MARK: - Initialization -
     class func loadLevel(_ levelNum: Int, size: CGSize, scaleMode:SKSceneScaleMode, totalScore: Int, sceneManager:SceneManager) -> GameScene?{
         
@@ -45,6 +58,16 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     }
     
     override func didMove(to view: SKView) {
+        // Calculate playable margin
+        let maxAspectRatio: CGFloat = 16.0/9.0
+        let maxAspectRatioHeight = size.width / maxAspectRatio
+        let playableMargin: CGFloat = (size.height
+            - maxAspectRatioHeight)/2
+        playableRect = CGRect(x: 0, y: playableMargin,
+                                  width: size.width, height: size.height-playableMargin*2)
+        
+        carNode = childNode(withName: "//carBody") as! CarNode
+        carNode.didMoveToScene()
         setupUI()
         setupSpritesAndPhysics()
     }
