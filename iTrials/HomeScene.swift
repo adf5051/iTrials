@@ -29,7 +29,7 @@ class HomeScene: SKScene {
 //        playGameButton.setup()
 //        playGameButton.subscribeToRelease(funcName: "onPlayGamePressed", callback: onPlayGamePressed)
         
-        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 100, height: 100))
+        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
         
         buttonNode.lineWidth = 5
         buttonNode.strokeColor = SKColor.red
@@ -38,11 +38,19 @@ class HomeScene: SKScene {
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: size.width/2, y: size.width/2)
+        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 600)
         button.subscribeToRelease(funcName: "onPlayGamePressed", callback: onPlayGamePressed)
         button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
         addChild(button)
+        
+        let label:SKLabelNode = SKLabelNode(fontNamed: "Helvetica Neue")
+        label.text = "Enter Here"
+        label.position = button.position
+        label.zPosition = 10
+        label.fontSize = 60
+        label.fontColor = UIColor.white
+        addChild(label)
     }
     
     func onPlayGamePressed() {

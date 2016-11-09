@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2686491DD2CD28000C741B /* Car.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F2686481DD2CD28000C741B /* Car.sks */; };
+		3F995FD11DD2DEBA003C5788 /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F995FD01DD2DEBA003C5788 /* CarNode.swift */; };
 		3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */; };
 		3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */; };
 		3FB8FADC1DD0001E0038C5D5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FADB1DD0001E0038C5D5 /* Actions.sks */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F2686481DD2CD28000C741B /* Car.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Car.sks; sourceTree = "<group>"; };
+		3F995FD01DD2DEBA003C5788 /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarNode.swift; sourceTree = "<group>"; };
 		3FB8FAD41DD0001E0038C5D5 /* iTrials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F2686471DD2CCEA000C741B /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				3F2686481DD2CD28000C741B /* Car.sks */,
+			);
+			name = Vehicle;
+			sourceTree = "<group>";
+		};
+		3F995FCF1DD2DE18003C5788 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
+				3F995FD01DD2DEBA003C5788 /* CarNode.swift */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
 		3FB8FACB1DD0001E0038C5D5 = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +109,7 @@
 		3FB8FAD61DD0001E0038C5D5 /* iTrials */ = {
 			isa = PBXGroup;
 			children = (
-				FA9AB5DC1DD0E094006CEBAC /* Button */,
+				3F995FCF1DD2DE18003C5788 /* CustomClasses */,
 				3FB8FAFD1DD021250038C5D5 /* SKS Files */,
 				FACB77F91DD01D7B00DFCD77 /* Extensions */,
 				3FB8FAFA1DD011030038C5D5 /* VC */,
@@ -143,7 +164,7 @@
 		3FB8FAFD1DD021250038C5D5 /* SKS Files */ = {
 			isa = PBXGroup;
 			children = (
-				3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */,
+				3F2686471DD2CCEA000C741B /* Vehicle */,
 				3FB8FADB1DD0001E0038C5D5 /* Actions.sks */,
 				3FB8FAFE1DD0213B0038C5D5 /* Scenes */,
 				3FB8FAEF1DD000630038C5D5 /* Levels */,
@@ -154,19 +175,12 @@
 		3FB8FAFE1DD0213B0038C5D5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */,
 				3FB8FB011DD024940038C5D5 /* HomeScene.sks */,
 				3FB8FB031DD025330038C5D5 /* LevelFinishScene.sks */,
 				3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */,
 			);
 			name = Scenes;
-			sourceTree = "<group>";
-		};
-		FA9AB5DC1DD0E094006CEBAC /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
-			);
-			name = Button;
 			sourceTree = "<group>";
 		};
 		FACB77F91DD01D7B00DFCD77 /* Extensions */ = {
@@ -241,6 +255,7 @@
 			files = (
 				3FB8FAE31DD0001E0038C5D5 /* Main.storyboard in Resources */,
 				3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */,
+				3F2686491DD2CD28000C741B /* Car.sks in Resources */,
 				3FB8FAE51DD0001F0038C5D5 /* Assets.xcassets in Resources */,
 				3FB8FB021DD024940038C5D5 /* HomeScene.sks in Resources */,
 				3FB8FAE81DD0001F0038C5D5 /* LaunchScreen.storyboard in Resources */,
@@ -270,6 +285,7 @@
 				3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */,
 				3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */,
 				FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */,
+				3F995FD11DD2DEBA003C5788 /* CarNode.swift in Sources */,
 				3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
