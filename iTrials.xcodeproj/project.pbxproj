@@ -28,6 +28,7 @@
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
 		FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */; };
+		FAA0D8011DD41D34009EEDE8 /* CarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8001DD41D34009EEDE8 /* CarTest.swift */; };
 		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
 		FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */; };
 		FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */; };
@@ -57,6 +58,7 @@
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		FAA0D8001DD41D34009EEDE8 /* CarTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTest.swift; sourceTree = "<group>"; };
 		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
 				3F995FD01DD2DEBA003C5788 /* CarNode.swift */,
+				FAA0D8001DD41D34009EEDE8 /* CarTest.swift */,
 			);
 			name = CustomClasses;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				3FB8FAFC1DD0117F0038C5D5 /* MotionMonitor.swift in Sources */,
 				FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */,
 				FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */,
+				FAA0D8011DD41D34009EEDE8 /* CarTest.swift in Sources */,
 				3FB8FAF51DD00C620038C5D5 /* SceneManager.swift in Sources */,
 				3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */,
 				3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */,

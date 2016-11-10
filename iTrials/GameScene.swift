@@ -57,6 +57,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         return scene
     }
     
+    var car:SKSpriteNode!
+    
     override func didMove(to view: SKView) {
         // Calculate playable margin
         let maxAspectRatio: CGFloat = 16.0/9.0
@@ -66,8 +68,33 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         playableRect = CGRect(x: 0, y: playableMargin,
                                   width: size.width, height: size.height-playableMargin*2)
         
-        carNode = childNode(withName: "//carBody") as! CarNode
+        carNode = childNode(withName: "//vehicle") as! CarNode
         carNode.didMoveToScene()
+        
+        car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
+        car.position = CGPoint(x:250,y:600)
+        car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
+        
+        addChild(car)
+        
+        let lWheel = SKShapeNode(circleOfRadius: 30)
+        lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
+        lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-10)
+        
+        let rWheel = SKShapeNode(circleOfRadius: 30)
+        rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
+        rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-10)
+        
+        addChild(lWheel)
+        addChild(rWheel)
+        
+        let lPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: lWheel.physicsBody!, anchor: lWheel.position)
+        let rPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: rWheel.physicsBody!, anchor: rWheel.position)
+        
+        physicsWorld.add(lPin)
+        physicsWorld.add(rPin)
+        
+        
         setupUI()
         setupSpritesAndPhysics()
     }
@@ -95,11 +122,28 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
         // Called before each frame is rendered
         calculateDeltaTime(currentTime: currentTime)
         
-        guard spritesMoving else{
-            return
+//        guard spritesMoving else{
+//            return
+//        }
+        
+        if gasDown {
+            car.physicsBody?.applyForce(CGVector(dx: 1000.0, dy: 0))
+        }
+        
+        if brakeDown {
+            car.physicsBody?.applyForce(CGVector(dx: -1000.0, dy: 0))
+        }
+        
+        if car.physicsBody!.velocity.dx > CGFloat(500.0) {
+            car.physicsBody!.velocity = CGVector(dx:500,dy:car.physicsBody!.velocity.dy)
+        }
+        
+        if car.physicsBody!.velocity.dx < CGFloat(-500.0) {
+            car.physicsBody!.velocity = CGVector(dx:-500,dy:car.physicsBody!.velocity.dy)
         }
     }
     
@@ -169,8 +213,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         let brakeButton = Button(brakeSprite)
         
         //this will need to change to adapt to the origin of the scene later
-        gasButton.position = CGPoint(x: size.width/2-gasSprite.size.width, y: (-size.height/2) + (gasSprite.size.height/2))
-        brakeButton.position = CGPoint(x: (-size.width/2)+brakeSprite.size.width, y: (-size.height/2) + (brakeSprite.size.height/2))
+        gasButton.position = CGPoint(x: size.width-gasSprite.size.width, y: gasSprite.size.height/2)
+        brakeButton.position = CGPoint(x: brakeSprite.size.width, y: brakeSprite.size.height/2)
         
         gasButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedalPressed"))
         brakeButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedalPressed"))
@@ -189,6 +233,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     }
     
     private func onGasPressed() {
+        //car.physicsBody?.applyImpulse(CGVector(dx: 100.0, dy: 0))
         gasDown = true
         print("GO!")
     }
