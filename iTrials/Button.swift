@@ -93,14 +93,14 @@ class Button: SKNode {
     // -- MARK: Fire Callbacks
     
     // The button was pressed, let all subscribers know
-    func firePressCallbacks(){
+    internal func firePressCallbacks(){
         for (_,callback) in pressCallbacks {
             callback();
         }
     }
     
     // The button was released, let all subscribers know
-    func fireReleaseCallbacks(){
+    internal func fireReleaseCallbacks(){
         for (_,callback) in releaseCallbacks {
             callback();
         }

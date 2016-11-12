@@ -78,6 +78,13 @@ public extension CGVector {
     self = normalized()
     return self
   }
+    
+    public mutating func rotate(angleInRad:CGFloat) {
+        let newAngle = angle + angleInRad
+        let x = cos(newAngle) * length()
+        let y = sin(newAngle) * length()
+        self = CGVector(dx: x, dy: y)
+    }
 
   /**
    * Calculates the distance between two CGVectors. Pythagoras!

@@ -44,6 +44,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     
     var carNode:CarNode!
     
+    var car:CarTest!
+    
     var playableRect:CGRect!
     
     // MARK: - Initialization -
@@ -57,7 +59,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         return scene
     }
     
-    var car:SKSpriteNode!
+
     
     override func didMove(to view: SKView) {
         // Calculate playable margin
@@ -71,28 +73,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         carNode = childNode(withName: "//vehicle") as! CarNode
         carNode.didMoveToScene()
         
-        car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
-        car.position = CGPoint(x:250,y:600)
-        car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
-        
-        addChild(car)
-        
-        let lWheel = SKShapeNode(circleOfRadius: 30)
-        lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-10)
-        
-        let rWheel = SKShapeNode(circleOfRadius: 30)
-        rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-10)
-        
-        addChild(lWheel)
-        addChild(rWheel)
-        
-        let lPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: lWheel.physicsBody!, anchor: lWheel.position)
-        let rPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: rWheel.physicsBody!, anchor: rWheel.position)
-        
-        physicsWorld.add(lPin)
-        physicsWorld.add(rPin)
+
+        car = CarTest(scene: self)
         
         
         setupUI()
@@ -131,20 +113,13 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
 //        }
         
         if gasDown {
-            car.physicsBody?.applyForce(CGVector(dx: 1000.0, dy: 0))
+            car.drive()
         }
         
         if brakeDown {
-            car.physicsBody?.applyForce(CGVector(dx: -1000.0, dy: 0))
+            car.reverse()
         }
-        
-        if car.physicsBody!.velocity.dx > CGFloat(500.0) {
-            car.physicsBody!.velocity = CGVector(dx:500,dy:car.physicsBody!.velocity.dy)
-        }
-        
-        if car.physicsBody!.velocity.dx < CGFloat(-500.0) {
-            car.physicsBody!.velocity = CGVector(dx:-500,dy:car.physicsBody!.velocity.dy)
-        }
+    
     }
     
     // MARK: - Pause/Unpause -

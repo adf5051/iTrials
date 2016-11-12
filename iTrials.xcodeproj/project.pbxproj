@@ -228,7 +228,7 @@
 				TargetAttributes = {
 					3FB8FAD31DD0001E0038C5D5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 86QCP25DMS;
+						DevelopmentTeam = ZXGJUD78UK;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -413,10 +413,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 86QCP25DMS;
+				DEVELOPMENT_TEAM = ZXGJUD78UK;
 				INFOPLIST_FILE = iTrials/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuerst.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -427,10 +428,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 86QCP25DMS;
+				DEVELOPMENT_TEAM = ZXGJUD78UK;
 				INFOPLIST_FILE = iTrials/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuerst.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
