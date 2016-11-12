@@ -44,7 +44,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     
     var carNode:CarNode!
     
-    var car:CarTest!
+    var car:Car!
     
     var playableRect:CGRect!
     
@@ -74,7 +74,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         carNode.didMoveToScene()
         
 
-        car = CarTest(scene: self)
+        car = Car(scene: self)
         
         
         setupUI()

@@ -9,17 +9,21 @@
 import Foundation
 import SpriteKit
 
-class CarTest {
+class Car {
     
     private var leftWheel:SKNode
     private var rightWheel:SKNode
     private var body:SKNode
     
+    private let torque:CGFloat = 1
+    private let liftForce:CGFloat = 450
+    private let tireFriction:CGFloat = 10
+    private let speedAndForceThreshold:CGFloat = 10000
+    
     private var up:CGVector{
         get{
             var worldUp = CGVector(dx:0,dy:1)
             worldUp.rotate(angleInRad: body.zRotation)
-            print(worldUp)
             return worldUp
         }
     }
@@ -43,7 +47,7 @@ class CarTest {
         lWheel.addChild(line)
         lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
         lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-10)
-        lWheel.physicsBody?.friction = 10
+        lWheel.physicsBody?.friction = tireFriction
         
         let rWheel = SKShapeNode(circleOfRadius: 30)
         let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -54,6 +58,7 @@ class CarTest {
         
         rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
         rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-10)
+        rWheel.physicsBody?.friction = tireFriction
         rWheel.lineWidth = 4
         
         scene.addChild(lWheel)
@@ -69,15 +74,31 @@ class CarTest {
         scene.physicsWorld.add(rPin)
     }
     
+    private func scaleForceByVelocity() -> CGFloat {
+        var vel:CGFloat! = body.physicsBody?.velocity.length()
+       
+        if vel > speedAndForceThreshold {
+            return 0
+        }
+        
+        // convert vel to a range of 0 - 500
+        vel = speedAndForceThreshold - vel
+       
+        return vel / speedAndForceThreshold;
+    }
     
     func drive(){
-        leftWheel.physicsBody?.applyTorque(-1)
-        rightWheel.physicsBody?.applyForce(up * 1000)
+        let liftScalar = scaleForceByVelocity()
+        
+        leftWheel.physicsBody?.applyTorque(-torque)
+        rightWheel.physicsBody?.applyForce(up * liftForce * liftScalar)
     }
     
     func reverse(){
-        leftWheel.physicsBody?.applyTorque(1)
-        rightWheel.physicsBody?.applyForce(up * -1000)
+        let liftScalar = scaleForceByVelocity()
+        
+        leftWheel.physicsBody?.applyTorque(torque)
+        rightWheel.physicsBody?.applyForce(up * -liftForce * liftScalar)
     }
     
 }
