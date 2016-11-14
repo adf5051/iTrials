@@ -45,7 +45,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        
+        self.camera = childNode(withName: "//Camera") as! SKCameraNode?
         car = Car(scene: self)
         setupUI()
         setupSpritesAndPhysics()
@@ -78,10 +78,6 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         // Called before each frame is rendered
         calculateDeltaTime(currentTime: currentTime)
         
-//        guard spritesMoving != false else{
-//            return
-//        }
-        
         if gasDown {
             car.drive()
         }
@@ -90,13 +86,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
             car.reverse()
         }
     
-        self.camera?.run(SKAction.move(to: car.position, duration: 0.1))
-    }
-    
-    override func didSimulatePhysics() {
-        if self.camera != nil{
-            self.centerOnNode(node: self.camera!)
-        }
+        self.camera?.position = car.position
     }
     
     // MARK: - Pause/Unpause -
@@ -143,11 +133,6 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     }
     
     //MARK: - Helpers -
-    private func centerOnNode(node:SKNode){
-        
-        let cameraPositionInScene:CGPoint = (node.scene?.convert(node.position, from: node.parent!))!
-        node.parent!.position = CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y)
-    }
     
     private func calculateDeltaTime(currentTime: TimeInterval){
         
@@ -171,8 +156,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         let brakeButton = Button(brakeSprite)
         
         //this will need to change to adapt to the origin of the scene later
-        gasButton.position = CGPoint(x: size.width-gasSprite.size.width, y: gasSprite.size.height/2)
-        brakeButton.position = CGPoint(x: brakeSprite.size.width, y: brakeSprite.size.height/2)
+        gasButton.position = CGPoint(x: size.width/2-gasSprite.size.width, y: -size.height/2 + gasSprite.size.height/2)
+        brakeButton.position = CGPoint(x: -size.width/2 + brakeSprite.size.width, y: -size.height/2 + brakeSprite.size.height/2)
         
         gasButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedalPressed"))
         brakeButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedalPressed"))
@@ -186,8 +171,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         gasButton.subscribeToRelease(funcName: "onGasReleased", callback: onGasReleased)
         brakeButton.subscribeToRelease(funcName: "onBrakeReleased", callback: onBrakeReleased)
         
-        addChild(gasButton)
-        addChild(brakeButton)
+        camera?.addChild(gasButton)
+        camera?.addChild(brakeButton)
     }
     
     private func onGasPressed() {
@@ -220,6 +205,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         finishLine.physicsBody!.isDynamic = false
         finishLine.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Finish
         finishLine.physicsBody!.collisionBitMask = GameData.PhysicsCategory.None
+        finishLine.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Car | GameData.PhysicsCategory.Wheels
         
         let ground = childNode(withName: "//ground") as! SKSpriteNode
         ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
@@ -227,7 +213,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     // MARK: - Collision -
     func didBegin(_ contact: SKPhysicsContact){
-        
+        let body1 = contact.bodyA.categoryBitMask
+        let body2 = contact.bodyB.categoryBitMask
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         guard gameOver != false else{
