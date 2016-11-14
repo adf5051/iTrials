@@ -46,7 +46,7 @@ class GameViewController: UIViewController, SceneManager {
         
         gameScene = GameScene.loadLevel(levelNum,size:screenSize,scaleMode: scaleMode,totalScore: totalScore,sceneManager: self)
         
-        let reveal = SKTransition.doorsOpenHorizontal(withDuration: 1)
+        let reveal = SKTransition.crossFade(withDuration: 1)
         skView.presentScene(gameScene!, transition: reveal)
         
         MotionMonitor.sharedMotionMonitor.startUpdates()

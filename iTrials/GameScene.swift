@@ -173,6 +173,20 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         camera?.addChild(gasButton)
         camera?.addChild(brakeButton)
+        
+        let restartSprite = SKSpriteNode(imageNamed: "redo")
+        restartSprite.setScale(0.5)
+        let restartButton = Button(restartSprite);
+        restartButton.position = CGPoint(x:size.width/2-restartSprite.size.width, y: size.height/2 - restartSprite.size.height/2)
+        restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
+        restartButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.2)
+        restartButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.2)
+        
+        camera?.addChild(restartButton)
+    }
+    
+    private func onRestartReleased() {
+        sceneManager.loadGameScene(levelNum: levelNum, totalScore: 0)
     }
     
     private func onGasPressed() {
@@ -213,8 +227,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     // MARK: - Collision -
     func didBegin(_ contact: SKPhysicsContact){
-        let body1 = contact.bodyA.categoryBitMask
-        let body2 = contact.bodyB.categoryBitMask
+
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         guard gameOver != false else{
