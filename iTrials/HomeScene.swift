@@ -44,7 +44,7 @@ class HomeScene: SKScene {
         button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
         addChild(button)
         
-        let label:SKLabelNode = SKLabelNode(fontNamed: "Helvetica Neue")
+        let label:SKLabelNode = SKLabelNode(fontNamed: GameData.Font.mainFont)
         label.text = "Enter Here"
         label.position = button.position
         label.zPosition = 10

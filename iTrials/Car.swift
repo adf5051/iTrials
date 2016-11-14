@@ -14,9 +14,14 @@ class Car {
     private var leftWheel:SKNode
     private var rightWheel:SKNode
     private var body:SKNode
+    var position:CGPoint{
+        get{
+            return self.body.position
+        }
+    }
     
     private let torque:CGFloat = 1
-    private let liftForce:CGFloat = 450
+    private let liftForce:CGFloat = 430
     private let tireFriction:CGFloat = 10
     private let speedAndForceThreshold:CGFloat = 10000
     
@@ -32,6 +37,8 @@ class Car {
         let car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
         car.position = CGPoint(x:250,y:1000)
         car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
+        car.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Car
+        car.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         
         scene.addChild(car)
         body = car
@@ -48,6 +55,8 @@ class Car {
         lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
         lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-10)
         lWheel.physicsBody?.friction = tireFriction
+        lWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
+        lWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.Ground
         
         let rWheel = SKShapeNode(circleOfRadius: 30)
         let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -59,6 +68,8 @@ class Car {
         rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
         rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-10)
         rWheel.physicsBody?.friction = tireFriction
+        rWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
+        rWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.Ground
         rWheel.lineWidth = 4
         
         scene.addChild(lWheel)
@@ -100,5 +111,6 @@ class Car {
         leftWheel.physicsBody?.applyTorque(torque)
         rightWheel.physicsBody?.applyForce(up * -liftForce * liftScalar)
     }
+    
     
 }

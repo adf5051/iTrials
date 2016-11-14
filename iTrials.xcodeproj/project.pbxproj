@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F2686491DD2CD28000C741B /* Car.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F2686481DD2CD28000C741B /* Car.sks */; };
-		3F995FD11DD2DEBA003C5788 /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F995FD01DD2DEBA003C5788 /* CarNode.swift */; };
 		3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */; };
 		3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */; };
 		3FB8FADC1DD0001E0038C5D5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FADB1DD0001E0038C5D5 /* Actions.sks */; };
@@ -27,6 +25,12 @@
 		3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */; };
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
+		636F69E41DD9123100761F79 /* Nickname.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E11DD9123100761F79 /* Nickname.otf */; };
+		636F69E51DD9123100761F79 /* MotionControl-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E21DD9123100761F79 /* MotionControl-Bold.otf */; };
+		636F69E61DD9123100761F79 /* MotionControl-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E31DD9123100761F79 /* MotionControl-BoldItalic.otf */; };
+		636F69E81DD91D7A00761F79 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E71DD91D7A00761F79 /* Level2.sks */; };
+		636F69EA1DD91D8800761F79 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E91DD91D8800761F79 /* Level3.sks */; };
+		63B82E751DD909E00075B77B /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B82E741DD909E00075B77B /* GameData.swift */; };
 		FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */; };
 		FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8001DD41D34009EEDE8 /* Car.swift */; };
 		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
@@ -35,8 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F2686481DD2CD28000C741B /* Car.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Car.sks; sourceTree = "<group>"; };
-		3F995FD01DD2DEBA003C5788 /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarNode.swift; sourceTree = "<group>"; };
 		3FB8FAD41DD0001E0038C5D5 /* iTrials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -57,6 +59,12 @@
 		3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		636F69E11DD9123100761F79 /* Nickname.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nickname.otf; sourceTree = "<group>"; };
+		636F69E21DD9123100761F79 /* MotionControl-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MotionControl-Bold.otf"; sourceTree = "<group>"; };
+		636F69E31DD9123100761F79 /* MotionControl-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MotionControl-BoldItalic.otf"; sourceTree = "<group>"; };
+		636F69E71DD91D7A00761F79 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
+		636F69E91DD91D8800761F79 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
+		63B82E741DD909E00075B77B /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAA0D8001DD41D34009EEDE8 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
@@ -75,19 +83,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F2686471DD2CCEA000C741B /* Vehicle */ = {
-			isa = PBXGroup;
-			children = (
-				3F2686481DD2CD28000C741B /* Car.sks */,
-			);
-			name = Vehicle;
-			sourceTree = "<group>";
-		};
 		3F995FCF1DD2DE18003C5788 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
 				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
-				3F995FD01DD2DEBA003C5788 /* CarNode.swift */,
 				FAA0D8001DD41D34009EEDE8 /* Car.swift */,
 			);
 			name = CustomClasses;
@@ -112,6 +111,7 @@
 		3FB8FAD61DD0001E0038C5D5 /* iTrials */ = {
 			isa = PBXGroup;
 			children = (
+				636F69DF1DD911F700761F79 /* Resources */,
 				3F995FCF1DD2DE18003C5788 /* CustomClasses */,
 				3FB8FAFD1DD021250038C5D5 /* SKS Files */,
 				FACB77F91DD01D7B00DFCD77 /* Extensions */,
@@ -131,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				3FB8FAF21DD004550038C5D5 /* Level1.sks */,
+				636F69E71DD91D7A00761F79 /* Level2.sks */,
+				636F69E91DD91D8800761F79 /* Level3.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -141,6 +143,7 @@
 				3FB8FAFB1DD0117F0038C5D5 /* MotionMonitor.swift */,
 				3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */,
 				3FB8FAF61DD00D150038C5D5 /* LevelResults.swift */,
+				63B82E741DD909E00075B77B /* GameData.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -167,7 +170,6 @@
 		3FB8FAFD1DD021250038C5D5 /* SKS Files */ = {
 			isa = PBXGroup;
 			children = (
-				3F2686471DD2CCEA000C741B /* Vehicle */,
 				3FB8FADB1DD0001E0038C5D5 /* Actions.sks */,
 				3FB8FAFE1DD0213B0038C5D5 /* Scenes */,
 				3FB8FAEF1DD000630038C5D5 /* Levels */,
@@ -184,6 +186,24 @@
 				3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		636F69DF1DD911F700761F79 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				636F69E01DD9120100761F79 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		636F69E01DD9120100761F79 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				636F69E11DD9123100761F79 /* Nickname.otf */,
+				636F69E21DD9123100761F79 /* MotionControl-Bold.otf */,
+				636F69E31DD9123100761F79 /* MotionControl-BoldItalic.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		FACB77F91DD01D7B00DFCD77 /* Extensions */ = {
@@ -228,7 +248,7 @@
 				TargetAttributes = {
 					3FB8FAD31DD0001E0038C5D5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = ZXGJUD78UK;
+						DevelopmentTeam = 86QCP25DMS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,14 +278,18 @@
 			files = (
 				3FB8FAE31DD0001E0038C5D5 /* Main.storyboard in Resources */,
 				3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */,
-				3F2686491DD2CD28000C741B /* Car.sks in Resources */,
 				3FB8FAE51DD0001F0038C5D5 /* Assets.xcassets in Resources */,
 				3FB8FB021DD024940038C5D5 /* HomeScene.sks in Resources */,
+				636F69EA1DD91D8800761F79 /* Level3.sks in Resources */,
+				636F69E81DD91D7A00761F79 /* Level2.sks in Resources */,
 				3FB8FAE81DD0001F0038C5D5 /* LaunchScreen.storyboard in Resources */,
+				636F69E41DD9123100761F79 /* Nickname.otf in Resources */,
+				636F69E61DD9123100761F79 /* MotionControl-BoldItalic.otf in Resources */,
 				3FB8FAF31DD004550038C5D5 /* Level1.sks in Resources */,
 				3FB8FADC1DD0001E0038C5D5 /* Actions.sks in Resources */,
 				3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */,
 				3FB8FB041DD025330038C5D5 /* LevelFinishScene.sks in Resources */,
+				636F69E51DD9123100761F79 /* MotionControl-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FB8FADE1DD0001E0038C5D5 /* GameScene.swift in Sources */,
+				63B82E751DD909E00075B77B /* GameData.swift in Sources */,
 				3FB8FAE01DD0001E0038C5D5 /* GameViewController.swift in Sources */,
 				FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */,
 				3FB8FB001DD021730038C5D5 /* HomeScene.swift in Sources */,
@@ -289,7 +314,6 @@
 				3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */,
 				3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */,
 				FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */,
-				3F995FD11DD2DEBA003C5788 /* CarNode.swift in Sources */,
 				3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,11 +437,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZXGJUD78UK;
+				DEVELOPMENT_TEAM = 86QCP25DMS;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fuerst.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -428,11 +452,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZXGJUD78UK;
+				DEVELOPMENT_TEAM = 86QCP25DMS;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fuerst.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,25 +9,10 @@
 import SpriteKit
 import GameplayKit
 
-struct PhysicsCategory {
-    static let None: UInt32 = 0
-    static let Cat: UInt32 = 0b1 // 1
-    static let Block: UInt32 = 0b10 // 2
-    static let Bed: UInt32 = 0b100 // 4
-    static let Edge: UInt32 = 0b1000 // 8
-    static let Label: UInt32 = 0b10000 // 16
-}
-
-struct GameLayer {
-    static let background: CGFloat = 0
-    static let hud       : CGFloat = 1
-    static let sprite    : CGFloat = 2
-    static let message   : CGFloat = 3
-}
-
-class GameScene: SKScene,UIGestureRecognizerDelegate {
+class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     var levelNum:Int = 1
+    var totalScore:Int = 0
     var sceneManager:SceneManager = GameViewController()
     var spritesMoving:Bool = false
     var gameLoopPaused:Bool = true{
@@ -41,8 +26,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     
     var gasDown:Bool = false
     var brakeDown:Bool = false
-    
-    var carNode:CarNode!
+    var gameOver:Bool = false
     
     var car:Car!
     
@@ -56,27 +40,13 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         scene.size = size
         scene.scaleMode = scaleMode
         scene.sceneManager = sceneManager
+        scene.playableRect = GameData.getPlayableRect(game: scene)
         return scene
     }
     
-
-    
     override func didMove(to view: SKView) {
-        // Calculate playable margin
-        let maxAspectRatio: CGFloat = 16.0/9.0
-        let maxAspectRatioHeight = size.width / maxAspectRatio
-        let playableMargin: CGFloat = (size.height
-            - maxAspectRatioHeight)/2
-        playableRect = CGRect(x: 0, y: playableMargin,
-                                  width: size.width, height: size.height-playableMargin*2)
         
-        carNode = childNode(withName: "//vehicle") as! CarNode
-        carNode.didMoveToScene()
-        
-
         car = Car(scene: self)
-        
-        
         setupUI()
         setupSpritesAndPhysics()
     }
@@ -108,7 +78,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
         // Called before each frame is rendered
         calculateDeltaTime(currentTime: currentTime)
         
-//        guard spritesMoving else{
+//        guard spritesMoving != false else{
 //            return
 //        }
         
@@ -120,6 +90,13 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
             car.reverse()
         }
     
+        self.camera?.run(SKAction.move(to: car.position, duration: 0.1))
+    }
+    
+    override func didSimulatePhysics() {
+        if self.camera != nil{
+            self.centerOnNode(node: self.camera!)
+        }
     }
     
     // MARK: - Pause/Unpause -
@@ -166,6 +143,12 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     }
     
     //MARK: - Helpers -
+    private func centerOnNode(node:SKNode){
+        
+        let cameraPositionInScene:CGPoint = (node.scene?.convert(node.position, from: node.parent!))!
+        node.parent!.position = CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y)
+    }
+    
     private func calculateDeltaTime(currentTime: TimeInterval){
         
         if lastUpdateTime > 0{
@@ -229,6 +212,72 @@ class GameScene: SKScene,UIGestureRecognizerDelegate {
     }
     
     private func setupSpritesAndPhysics(){
+        physicsWorld.contactDelegate = self
         
+        let finishLine = childNode(withName: "//finishLine") as! SKSpriteNode
+        let finishSize = finishLine.size
+        finishLine.physicsBody = SKPhysicsBody(rectangleOf: finishSize)
+        finishLine.physicsBody!.isDynamic = false
+        finishLine.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Finish
+        finishLine.physicsBody!.collisionBitMask = GameData.PhysicsCategory.None
+        
+        let ground = childNode(withName: "//ground") as! SKSpriteNode
+        ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
+    }
+    
+    // MARK: - Collision -
+    func didBegin(_ contact: SKPhysicsContact){
+        
+        let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        guard gameOver != false else{
+            return
+        }
+        
+        if collision == GameData.PhysicsCategory.Wheels | GameData.PhysicsCategory.Finish{
+            
+            win()
+        }
+        else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.Ground{
+            
+            lose()
+        }
+    }
+    
+    // MARK: - Win/Lose -
+    func win(){
+        print("Win!!")
+        gameOver = true
+        
+        let label = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        label.text = "NextLevel?"
+        label.position = CGPoint(x: size.width/2, y: size.height/2)
+        
+        addChild(label)
+        
+        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
+        
+        buttonNode.lineWidth = 5
+        buttonNode.strokeColor = SKColor.red
+        buttonNode.fillColor = SKColor.black
+        
+        //label and buttons
+        let button:Button = Button(buttonNode)
+        button.setup();
+        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 600)
+        button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
+        button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
+        button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
+        addChild(button)
+    }
+    
+    func lose(){
+        print("Lose!!")
+        gameOver = true
+    }
+    
+    func nextLevel(){
+        
+        sceneManager.loadGameScene(levelNum: levelNum + 1, totalScore: totalScore)
     }
 }
