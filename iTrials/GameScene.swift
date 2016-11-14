@@ -85,8 +85,6 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         if brakeDown {
             car.reverse()
         }
-    
-        self.camera?.position = car.position
     }
     
     // MARK: - Pause/Unpause -
@@ -223,6 +221,10 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         let ground = childNode(withName: "//ground") as! SKSpriteNode
         ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
+    }
+    
+    override func didSimulatePhysics() {
+        self.camera?.position = car.position
     }
     
     // MARK: - Collision -

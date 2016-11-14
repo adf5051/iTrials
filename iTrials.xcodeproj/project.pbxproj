@@ -33,6 +33,7 @@
 		63B82E751DD909E00075B77B /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B82E741DD909E00075B77B /* GameData.swift */; };
 		FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */; };
 		FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8001DD41D34009EEDE8 /* Car.swift */; };
+		FAA0D8051DDA2596009EEDE8 /* CoinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */; };
 		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
 		FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */; };
 		FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */; };
@@ -67,6 +68,7 @@
 		63B82E741DD909E00075B77B /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAA0D8001DD41D34009EEDE8 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinNode.swift; sourceTree = "<group>"; };
 		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
 				FAA0D8001DD41D34009EEDE8 /* Car.swift */,
+				FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */,
 			);
 			name = CustomClasses;
 			sourceTree = "<group>";
@@ -248,7 +251,7 @@
 				TargetAttributes = {
 					3FB8FAD31DD0001E0038C5D5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 86QCP25DMS;
+						DevelopmentTeam = ZXGJUD78UK;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -308,6 +311,7 @@
 				3FB8FAFC1DD0117F0038C5D5 /* MotionMonitor.swift in Sources */,
 				FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */,
 				FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */,
+				FAA0D8051DDA2596009EEDE8 /* CoinNode.swift in Sources */,
 				FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */,
 				3FB8FAF51DD00C620038C5D5 /* SceneManager.swift in Sources */,
 				3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */,
@@ -437,7 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 86QCP25DMS;
+				DEVELOPMENT_TEAM = ZXGJUD78UK;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -452,7 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 86QCP25DMS;
+				DEVELOPMENT_TEAM = ZXGJUD78UK;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
