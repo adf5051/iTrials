@@ -12,6 +12,7 @@ import GameplayKit
 class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     var scoreLabel: SKLabelNode!
+    var dirtEmitter: SKEmitterNode!
     
     var levelNum:Int = 1
     var totalScore:Int = 0 {
@@ -35,6 +36,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     var gameOver:Bool = false
     
     var car:Car!
+    var carTop: SKSpriteNode!
     
     var playableRect:CGRect!
     
@@ -224,6 +226,13 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     private func setupSpritesAndPhysics(){
         physicsWorld.contactDelegate = self
         
+        carTop = SKSpriteNode(color: SKColor.clear, size: car.carNode.size)
+        carTop.physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: car.carNode.position.x - (car.carNode.size.width/2), y: car.carNode.position.y + (car.carNode.size.height/2)), to: CGPoint(x: car.carNode.position.x + (car.carNode.size.width/2), y: car.carNode.position.y + (car.carNode.size.height/2)))
+        carTop.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
+        carTop.physicsBody!.categoryBitMask = GameData.PhysicsCategory.CarTop
+        carTop.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground
+        addChild(carTop)
+        
         let finishLine = childNode(withName: "//finishLine") as! SKSpriteNode
         let finishSize = finishLine.size
         finishLine.physicsBody = SKPhysicsBody(rectangleOf: finishSize)
@@ -234,6 +243,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         let ground = childNode(withName: "//ground") as! SKSpriteNode
         ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
+        ground.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Wheels
         
         enumerateChildNodes(withName: "Coin_Ref", using: { node, _ in
             
@@ -241,10 +251,16 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
                 coinNode.addedToScene(value: 10)
             }
         })
+        
+        dirtEmitter = SKEmitterNode(fileNamed: "Dirt")
+        dirtEmitter.position = CGPoint(x: -90, y: -37)
+        dirtEmitter.name = "Emitter"
     }
     
     override func didSimulatePhysics() {
-        self.camera?.position = car.position
+        self.camera?.position = car.carNode.position
+        carTop.position = CGPoint(x: car.carNode.position.x, y: car.carNode.position.y)
+        carTop.zRotation = car.carNode.zRotation
     }
     
     // MARK: - Collision -
@@ -260,20 +276,23 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
             
             win()
         }
-        else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.Ground{
+        else if collision == GameData.PhysicsCategory.CarTop | GameData.PhysicsCategory.Ground{
             
             lose()
-        } else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.PickUp
+        }
+        else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.PickUp
             || collision == GameData.PhysicsCategory.Wheels | GameData.PhysicsCategory.PickUp {
             
             if contact.bodyA.node?.name == "Coin"{
                 let coin = contact.bodyA.node as! CoinNode
                 totalScore += coin.value
+                coin.removeFromParent()
             } else if contact.bodyB.node?.name == "Coin"{
                 let coin = contact.bodyB.node as! CoinNode
                 totalScore += coin.value
+                coin.removeFromParent()
             }
-        }
+        } 
     }
     
     // MARK: - Win/Lose -

@@ -31,6 +31,7 @@ struct GameData {
         static let Ground: UInt32 = 0b1000 // 8
         static let Label: UInt32 =  0b10000 // 16
         static let PickUp: UInt32 = 0b100000 // 32
+        static let CarTop: UInt32 = 0b1000000 // 64
     }
     
     struct GameLayer {

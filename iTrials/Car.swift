@@ -14,12 +14,12 @@ class Car {
     private var leftWheel:SKNode
     private var rightWheel:SKNode
     private var body:SKNode
-    var position:CGPoint{
+    private var car:SKSpriteNode
+    var carNode:SKSpriteNode{
         get{
-            return self.body.position
+            return self.car
         }
-    }
-    
+    }    
     private let torque:CGFloat = 1
     private let liftForce:CGFloat = 430
     private let tireFriction:CGFloat = 10
@@ -34,7 +34,7 @@ class Car {
     }
     
     init(scene:SKScene) {
-        let car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
+        car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
         car.position = CGPoint(x:250,y:1000)
         car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
         car.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Car
@@ -54,11 +54,11 @@ class Car {
         lWheel.name = "drive"
         lWheel.addChild(line)
         lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-10)
+        lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-15)
         lWheel.physicsBody?.friction = tireFriction
         lWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         lWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
-        lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
+        lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
         
         let rWheel = SKShapeNode(circleOfRadius: 30)
         let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -68,11 +68,11 @@ class Car {
         rWheel.addChild(rline)
         
         rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-10)
+        rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-15)
         rWheel.physicsBody?.friction = tireFriction
         rWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         rWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
-        rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
+        rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
         rWheel.lineWidth = 4
         
         scene.addChild(lWheel)
