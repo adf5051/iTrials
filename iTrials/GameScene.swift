@@ -150,7 +150,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     private func setupUI(){
         scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
-        scoreLabel.fontName = GameData.Font.mainFont
+        scoreLabel?.fontName = GameData.Font.mainFont
         
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
         gasSprite.xScale = 1.5
@@ -198,7 +198,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     private func onGasPressed() {
         //car.physicsBody?.applyImpulse(CGVector(dx: 100.0, dy: 0))
-        gasDown = true
+        if(gameOver != true){
+            gasDown = true
+        }
         print("GO!")
     }
     
@@ -208,7 +210,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     }
     
     private func onBrakePressed() {
-        brakeDown = true
+        if(gameOver != true){
+            brakeDown = true
+        }
         print("STOP!")
     }
     
@@ -245,7 +249,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     // MARK: - Collision -
     func didBegin(_ contact: SKPhysicsContact){
-
+        
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         guard gameOver != true else{
@@ -274,14 +278,38 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     // MARK: - Win/Lose -
     func win(){
+        
+        //show win screen
         print("Win!!")
         gameOver = true
         
-        let label = SKLabelNode(fontNamed: GameData.Font.mainFont)
-        label.text = "NextLevel?"
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
+        let winLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
         
-        addChild(label)
+        if(levelNum == GameData.Game.maxLevel){
+            
+            winLabel.text = "You Win!"
+        }
+        else{
+            winLabel.text = "Level Finished!"
+        }
+        winLabel.fontSize = 120
+        winLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 100)
+        winLabel.zPosition = GameData.GameLayer.message
+        
+        camera?.addChild(winLabel)
+        
+        let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        
+        if(levelNum == GameData.Game.maxLevel){
+            nextLabel.text = "Quit"
+        }
+        else{
+            nextLabel.text = "Continue"
+        }
+        nextLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        nextLabel.zPosition = GameData.GameLayer.message
+        
+        camera?.addChild(nextLabel)
         
         let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
         
@@ -292,20 +320,71 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 600)
-        button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
+        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        
+        if levelNum == GameData.Game.maxLevel{
+            button.subscribeToRelease(funcName: "homeScene", callback: homeScene)
+        }
+        else{
+            button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
+        }
         button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
-        addChild(button)
+        button.zPosition = GameData.GameLayer.hud
+        camera?.addChild(button)
     }
     
     func lose(){
+        
+        //show lose screen
         print("Lose!!")
         gameOver = true
+        let loseLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        loseLabel.text = "Game Over"
+        loseLabel.fontSize = 120
+        loseLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 100)
+        loseLabel.zPosition = GameData.GameLayer.message
+        
+        camera?.addChild(loseLabel)
+        
+        let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        nextLabel.text = "Quit"
+        nextLabel.fontSize = 60
+        nextLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        nextLabel.zPosition = GameData.GameLayer.message
+        
+        camera?.addChild(nextLabel)
+        
+        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
+        
+        buttonNode.lineWidth = 5
+        buttonNode.strokeColor = SKColor.red
+        buttonNode.fillColor = SKColor.black
+        
+        //label and buttons
+        let button:Button = Button(buttonNode)
+        button.setup();
+        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        button.subscribeToRelease(funcName: "homeScene", callback: homeScene)
+        button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
+        button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
+        button.zPosition = GameData.GameLayer.hud
+        camera?.addChild(button)
     }
     
+    // load next level
     func nextLevel(){
         
-        sceneManager.loadGameScene(levelNum: levelNum + 1, totalScore: totalScore)
+        if(gameOver){
+            sceneManager.loadGameScene(levelNum: levelNum + 1, totalScore: totalScore)
+        }
+    }
+    
+    // return to home screen
+    func homeScene(){
+        
+        if(gameOver){
+            sceneManager.loadHomeScene()
+        }
     }
 }

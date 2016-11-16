@@ -19,6 +19,10 @@ struct GameData {
         static let mainFont = "NicknameDEMO"
     }
     
+    struct Game {
+        static let maxLevel = 3
+    }
+    
     struct PhysicsCategory {
         static let None: UInt32 =   0
         static let Car: UInt32 =    0b1 // 1

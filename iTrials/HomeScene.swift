@@ -45,7 +45,7 @@ class HomeScene: SKScene {
         addChild(button)
         
         let label:SKLabelNode = SKLabelNode(fontNamed: GameData.Font.mainFont)
-        label.text = "Enter Here"
+        label.text = "Start"
         label.position = button.position
         label.zPosition = 10
         label.fontSize = 60

@@ -14,7 +14,7 @@ class CoinNode: SKSpriteNode {
     
     func addedToScene(value:Int) {
         let label = self.childNode(withName: "ValueLabel") as! SKLabelNode
-        label.text = String(value);
+        label.text = String(value)
         self.value = value
         physicsBody?.collisionBitMask = GameData.PhysicsCategory.None
         physicsBody?.contactTestBitMask = GameData.PhysicsCategory.Car | GameData.PhysicsCategory.Wheels

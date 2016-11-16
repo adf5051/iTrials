@@ -47,7 +47,7 @@ class Car {
         let lWheel = SKShapeNode(circleOfRadius: 30)
         let line = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
         line.lineWidth = 4
-        line.position = lWheel.position;
+        line.position = lWheel.position
         line.position.y -= 15
         
         lWheel.lineWidth = 4
@@ -90,15 +90,15 @@ class Car {
     
     private func scaleForceByVelocity() -> CGFloat {
         var vel:CGFloat! = body.physicsBody?.velocity.length()
-       
+        
         if vel > speedAndForceThreshold {
             return 0
         }
         
         // convert vel to a range of 0 - 500
         vel = speedAndForceThreshold - vel
-       
-        return vel / speedAndForceThreshold;
+        
+        return vel / speedAndForceThreshold
     }
     
     func drive(){
