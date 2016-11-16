@@ -20,12 +20,13 @@ struct GameData {
     }
     
     struct PhysicsCategory {
-        static let None: UInt32 = 0
-        static let Car: UInt32 = 0b1 // 1
+        static let None: UInt32 =   0
+        static let Car: UInt32 =    0b1 // 1
         static let Wheels: UInt32 = 0b10 // 2
         static let Finish: UInt32 = 0b100 // 4
         static let Ground: UInt32 = 0b1000 // 8
-        static let Label: UInt32 = 0b10000 // 16
+        static let Label: UInt32 =  0b10000 // 16
+        static let PickUp: UInt32 = 0b100000 // 32
     }
     
     struct GameLayer {

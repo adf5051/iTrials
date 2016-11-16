@@ -11,8 +11,14 @@ import GameplayKit
 
 class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
+    var scoreLabel: SKLabelNode!
+    
     var levelNum:Int = 1
-    var totalScore:Int = 0
+    var totalScore:Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(totalScore)"
+        }
+    }
     var sceneManager:SceneManager = GameViewController()
     var spritesMoving:Bool = false
     var gameLoopPaused:Bool = true{
@@ -143,6 +149,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     }
     
     private func setupUI(){
+        scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
+        scoreLabel.fontName = GameData.Font.mainFont
+        
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
         gasSprite.xScale = 1.5
         gasSprite.yScale = 1.5
@@ -221,6 +230,13 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         let ground = childNode(withName: "//ground") as! SKSpriteNode
         ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
+        
+        enumerateChildNodes(withName: "Coin_Ref", using: { node, _ in
+            
+            if let coinNode = node.childNode(withName: ".//Coin") as? CoinNode {
+                coinNode.addedToScene(value: 10)
+            }
+        })
     }
     
     override func didSimulatePhysics() {
@@ -232,7 +248,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
 
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
-        guard gameOver != false else{
+        guard gameOver != true else{
             return
         }
         
@@ -243,6 +259,16 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.Ground{
             
             lose()
+        } else if collision == GameData.PhysicsCategory.Car | GameData.PhysicsCategory.PickUp
+            || collision == GameData.PhysicsCategory.Wheels | GameData.PhysicsCategory.PickUp {
+            
+            if contact.bodyA.node?.name == "Coin"{
+                let coin = contact.bodyA.node as! CoinNode
+                totalScore += coin.value
+            } else if contact.bodyB.node?.name == "Coin"{
+                let coin = contact.bodyB.node as! CoinNode
+                totalScore += coin.value
+            }
         }
     }
     

@@ -34,6 +34,7 @@
 		FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */; };
 		FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8001DD41D34009EEDE8 /* Car.swift */; };
 		FAA0D8051DDA2596009EEDE8 /* CoinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */; };
+		FAA0D8071DDA2E18009EEDE8 /* CoinNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAA0D8061DDA2E18009EEDE8 /* CoinNode.sks */; };
 		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
 		FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */; };
 		FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */; };
@@ -69,6 +70,7 @@
 		FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAA0D8001DD41D34009EEDE8 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinNode.swift; sourceTree = "<group>"; };
+		FAA0D8061DDA2E18009EEDE8 /* CoinNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinNode.sks; sourceTree = "<group>"; };
 		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				3FB8FADB1DD0001E0038C5D5 /* Actions.sks */,
+				FAA0D8061DDA2E18009EEDE8 /* CoinNode.sks */,
 				3FB8FAFE1DD0213B0038C5D5 /* Scenes */,
 				3FB8FAEF1DD000630038C5D5 /* Levels */,
 			);
@@ -285,6 +288,7 @@
 				3FB8FB021DD024940038C5D5 /* HomeScene.sks in Resources */,
 				636F69EA1DD91D8800761F79 /* Level3.sks in Resources */,
 				636F69E81DD91D7A00761F79 /* Level2.sks in Resources */,
+				FAA0D8071DDA2E18009EEDE8 /* CoinNode.sks in Resources */,
 				3FB8FAE81DD0001F0038C5D5 /* LaunchScreen.storyboard in Resources */,
 				636F69E41DD9123100761F79 /* Nickname.otf in Resources */,
 				636F69E61DD9123100761F79 /* MotionControl-BoldItalic.otf in Resources */,

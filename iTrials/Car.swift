@@ -39,7 +39,7 @@ class Car {
         car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
         car.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Car
         car.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
-        car.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground | GameData.PhysicsCategory.Finish
+        car.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground | GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
         
         scene.addChild(car)
         body = car
@@ -58,7 +58,7 @@ class Car {
         lWheel.physicsBody?.friction = tireFriction
         lWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         lWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
-        lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish
+        lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
         
         let rWheel = SKShapeNode(circleOfRadius: 30)
         let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -72,7 +72,7 @@ class Car {
         rWheel.physicsBody?.friction = tireFriction
         rWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         rWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
-        rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish
+        rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
         rWheel.lineWidth = 4
         
         scene.addChild(lWheel)
