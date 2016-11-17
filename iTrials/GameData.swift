@@ -35,10 +35,12 @@ struct GameData {
     }
     
     struct GameLayer {
-        static let background: CGFloat = 0
-        static let hud       : CGFloat = 1
-        static let sprite    : CGFloat = 2
-        static let message   : CGFloat = 3
+        static let background   : CGFloat = 0
+        static let pickups      : CGFloat = 1
+        static let pickupLabels : CGFloat = 2
+        static let hud          : CGFloat = 3
+        static let sprite       : CGFloat = 4
+        static let message      : CGFloat = 5
     }
     
     static func getPlayableRect(game: GameScene) -> CGRect{

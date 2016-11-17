@@ -55,6 +55,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.camera = childNode(withName: "//Camera") as! SKCameraNode?
         car = Car(scene: self)
+        let music = SKAudioNode(fileNamed: "repeater.mp3")
+        music.autoplayLooped = true
+        addChild(music)
         setupUI()
         setupSpritesAndPhysics()
     }
@@ -243,7 +246,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         let ground = childNode(withName: "//ground") as! SKSpriteNode
         ground.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
-        ground.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Wheels
+        ground.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.CarTop
         
         enumerateChildNodes(withName: "Coin_Ref", using: { node, _ in
             
@@ -259,6 +262,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     override func didSimulatePhysics() {
         self.camera?.position = car.carNode.position
+        car.update()
         carTop.position = CGPoint(x: car.carNode.position.x, y: car.carNode.position.y)
         carTop.zRotation = car.carNode.zRotation
     }

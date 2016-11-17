@@ -15,6 +15,9 @@ class Car {
     private var rightWheel:SKNode
     private var body:SKNode
     private var car:SKSpriteNode
+    private var top:SKNode
+    private let topPos:CGPoint = CGPoint(x: 0, y: 25)
+    
     var carNode:SKSpriteNode{
         get{
             return self.car
@@ -43,6 +46,16 @@ class Car {
         
         scene.addChild(car)
         body = car
+        
+        let top = SKSpriteNode(color: SKColor.clear, size: CGSize(width: 100, height: 25))
+        top.position = topPos + car.position
+        top.physicsBody = SKPhysicsBody(rectangleOf: top.size)
+        top.physicsBody!.categoryBitMask = GameData.PhysicsCategory.CarTop
+        top.physicsBody!.collisionBitMask = GameData.PhysicsCategory.None
+        top.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground
+        top.physicsBody!.affectedByGravity = false
+        scene.addChild(top)
+        self.top = top
         
         let lWheel = SKShapeNode(circleOfRadius: 30)
         let line = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -83,9 +96,17 @@ class Car {
         
         let lPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: lWheel.physicsBody!, anchor: lWheel.position)
         let rPin = SKPhysicsJointPin.joint(withBodyA: car.physicsBody!, bodyB: rWheel.physicsBody!, anchor: rWheel.position)
+        let tPin = SKPhysicsJointFixed.joint(withBodyA: body.physicsBody!, bodyB: top.physicsBody!, anchor: top.position)
         
         scene.physicsWorld.add(lPin)
         scene.physicsWorld.add(rPin)
+        scene.physicsWorld.add(tPin)
+    }
+    
+    public func update() {
+//        top.position = CGPoint.zero
+//        top.zRotation = body.zRotation
+//        top.position = topPos;
     }
     
     private func scaleForceByVelocity() -> CGFloat {
