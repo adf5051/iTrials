@@ -258,6 +258,12 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         dirtEmitter = SKEmitterNode(fileNamed: "Dirt")
         dirtEmitter.position = CGPoint(x: -90, y: -37)
         dirtEmitter.name = "Emitter"
+        
+        enumerateChildNodes(withName: "Obstacle", using: { node, _ in
+            
+            node.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Ground
+            node.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.CarTop
+        })
     }
     
     override func didSimulatePhysics() {
