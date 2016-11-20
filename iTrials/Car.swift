@@ -43,17 +43,20 @@ class Car {
         car.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Car
         car.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         car.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground | GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
+        car.physicsBody!.usesPreciseCollisionDetection = true
         
         scene.addChild(car)
         body = car
         
-        let top = SKSpriteNode(color: SKColor.clear, size: CGSize(width: 100, height: 25))
+        let top = SKSpriteNode(color: SKColor.red, size: CGSize(width: 100, height: 25))
         top.position = topPos + car.position
         top.physicsBody = SKPhysicsBody(rectangleOf: top.size)
         top.physicsBody!.categoryBitMask = GameData.PhysicsCategory.CarTop
         top.physicsBody!.collisionBitMask = GameData.PhysicsCategory.None
         top.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground
         top.physicsBody!.affectedByGravity = false
+        top.physicsBody!.usesPreciseCollisionDetection = true
+        
         scene.addChild(top)
         self.top = top
         
@@ -72,6 +75,7 @@ class Car {
         lWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         lWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
+        lWheel.physicsBody!.usesPreciseCollisionDetection = true
         
         let rWheel = SKShapeNode(circleOfRadius: 30)
         let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
@@ -86,6 +90,7 @@ class Car {
         rWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         rWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
+        rWheel.physicsBody!.usesPreciseCollisionDetection = true
         rWheel.lineWidth = 4
         
         scene.addChild(lWheel)

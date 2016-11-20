@@ -58,6 +58,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         let music = SKAudioNode(fileNamed: "repeater.mp3")
         music.autoplayLooped = true
         addChild(music)
+        music.run(SKAction.changeVolume(to: 0.15, duration: 0))
         setupUI()
         setupSpritesAndPhysics()
     }
@@ -269,8 +270,6 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     override func didSimulatePhysics() {
         self.camera?.position = car.carNode.position
         car.update()
-        carTop.position = CGPoint(x: car.carNode.position.x, y: car.carNode.position.y)
-        carTop.zRotation = car.carNode.zRotation
     }
     
     // MARK: - Collision -
@@ -296,11 +295,11 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "Coin"{
                 let coin = contact.bodyA.node as! CoinNode
                 totalScore += coin.value
-                coin.removeFromParent()
+                coin.deleteFromScene()
             } else if contact.bodyB.node?.name == "Coin"{
                 let coin = contact.bodyB.node as! CoinNode
                 totalScore += coin.value
-                coin.removeFromParent()
+                coin.deleteFromScene()
             }
         } 
     }
@@ -327,24 +326,17 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         
         camera?.addChild(winLabel)
         
-        let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        //let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+        
+        var buttonNode:SKSpriteNode
         
         if(levelNum == GameData.Game.maxLevel){
-            nextLabel.text = "Quit"
+            //nextLabel.text = "Quit"
+            buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
         }
         else{
-            nextLabel.text = "Continue"
+            buttonNode = SKSpriteNode(imageNamed: "Continue")
         }
-        nextLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
-        nextLabel.zPosition = GameData.GameLayer.message
-        
-        camera?.addChild(nextLabel)
-        
-        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
-        
-        buttonNode.lineWidth = 5
-        buttonNode.strokeColor = SKColor.red
-        buttonNode.fillColor = SKColor.black
         
         //label and buttons
         let button:Button = Button(buttonNode)
@@ -357,8 +349,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         else{
             button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
         }
-        button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
-        button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
+        button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         button.zPosition = GameData.GameLayer.hud
         camera?.addChild(button)
     }
@@ -375,28 +367,25 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         loseLabel.zPosition = GameData.GameLayer.message
         
         camera?.addChild(loseLabel)
+//        
+//        let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
+//        nextLabel.text = "Quit"
+//        nextLabel.fontSize = 60
+//        nextLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+//        nextLabel.zPosition = GameData.GameLayer.message
+//        
+//        camera?.addChild(nextLabel)
         
-        let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
-        nextLabel.text = "Quit"
-        nextLabel.fontSize = 60
-        nextLabel.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
-        nextLabel.zPosition = GameData.GameLayer.message
+        let buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
         
-        camera?.addChild(nextLabel)
-        
-        let buttonNode = SKShapeNode.init(rectOf: CGSize.init(width: 400, height: 100))
-        
-        buttonNode.lineWidth = 5
-        buttonNode.strokeColor = SKColor.red
-        buttonNode.fillColor = SKColor.black
         
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
         button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
         button.subscribeToRelease(funcName: "homeScene", callback: homeScene)
-        button.pressAnimation = SKAction.scale(by: 0.7, duration: 1)
-        button.releaseAnimation = SKAction.scale(to: 1, duration: 1)
+        button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         button.zPosition = GameData.GameLayer.hud
         camera?.addChild(button)
     }
