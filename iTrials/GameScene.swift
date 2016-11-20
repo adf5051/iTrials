@@ -297,10 +297,22 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
                 let coin = contact.bodyA.node as! CoinNode
                 totalScore += coin.value
                 coin.removeFromParent()
+                
+                let coinEmitter = SKEmitterNode(fileNamed: "PickupEmitter")!
+                coinEmitter.particlePosition = coin.position
+                coinEmitter.zPosition = GameData.GameLayer.sprite
+                addChild(coinEmitter)
+                run(SKAction.wait(forDuration: 2), completion: {coinEmitter.removeFromParent()})
             } else if contact.bodyB.node?.name == "Coin"{
                 let coin = contact.bodyB.node as! CoinNode
                 totalScore += coin.value
                 coin.removeFromParent()
+                
+                let coinEmitter = SKEmitterNode(fileNamed: "PickupEmitter")!
+                coinEmitter.particlePosition = coin.position
+                coinEmitter.zPosition = GameData.GameLayer.sprite
+                addChild(coinEmitter)
+                run(SKAction.wait(forDuration: 2), completion: {coinEmitter.removeFromParent()})
             }
         } 
     }

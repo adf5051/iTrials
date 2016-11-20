@@ -25,6 +25,7 @@
 		3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */; };
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
+		633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 633737461DE1276F008CE733 /* PickupEmitter.sks */; };
 		635825391DDCE44D00FC689D /* Dirt.sks in Resources */ = {isa = PBXBuildFile; fileRef = 635825371DDCE44D00FC689D /* Dirt.sks */; };
 		6358253A1DDCE44D00FC689D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 635825381DDCE44D00FC689D /* spark.png */; };
 		636E067E1DDC365900D44E23 /* CoinNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636E067D1DDC365900D44E23 /* CoinNode.sks */; };
@@ -64,6 +65,7 @@
 		3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		633737461DE1276F008CE733 /* PickupEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PickupEmitter.sks; sourceTree = "<group>"; };
 		635825371DDCE44D00FC689D /* Dirt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dirt.sks; sourceTree = "<group>"; };
 		635825381DDCE44D00FC689D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		636E067D1DDC365900D44E23 /* CoinNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinNode.sks; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				635825371DDCE44D00FC689D /* Dirt.sks */,
 				635825381DDCE44D00FC689D /* spark.png */,
+				633737461DE1276F008CE733 /* PickupEmitter.sks */,
 			);
 			name = Emitter;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */,
 				3FB8FB041DD025330038C5D5 /* LevelFinishScene.sks in Resources */,
 				636F69E51DD9123100761F79 /* MotionControl-Bold.otf in Resources */,
+				633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */,
 				6358253A1DDCE44D00FC689D /* spark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
