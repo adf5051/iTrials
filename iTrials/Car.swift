@@ -11,21 +11,28 @@ import SpriteKit
 
 class Car {
     
+    private var scale:CGFloat = 1.5
+    
+    // figure these out by dragging everything into a scene file and lining it up
+    // then if you scale the body in any way scale these too
+    private var lWheelOffset:CGPoint = CGPoint(x: -195, y: -108)
+    private var rWheelOffset:CGPoint = CGPoint(x: 210, y: -112)
+    private var guyOffset:CGPoint = CGPoint(x: -16, y: 58)
+    
     private var leftWheel:SKNode
     private var rightWheel:SKNode
     private var body:SKNode
     private var car:SKSpriteNode
     private var top:SKNode
-    private let topPos:CGPoint = CGPoint(x: 0, y: 25)
     
     var carNode:SKSpriteNode{
         get{
             return self.car
         }
     }    
-    private let torque:CGFloat = 1
-    private let liftForce:CGFloat = 430
-    private let tireFriction:CGFloat = 10
+    private let torque:CGFloat = 3
+    private let liftForce:CGFloat = 500
+    private let tireFriction:CGFloat = 100
     private let speedAndForceThreshold:CGFloat = 10000
     
     private var up:CGVector{
@@ -37,9 +44,15 @@ class Car {
     }
     
     init(scene:SKScene) {
-        car = SKSpriteNode(color: SKColor.yellow, size: CGSize(width: 150, height: 50))
+        lWheelOffset = lWheelOffset/scale
+        rWheelOffset = rWheelOffset/scale
+        guyOffset = guyOffset/scale
+        
+        car = SKSpriteNode(imageNamed: "BikeBody")
+        car.size = CGSize(width: car.size.width/scale,height:car.size.height/scale);
         car.position = CGPoint(x:250,y:1000)
         car.physicsBody = SKPhysicsBody(rectangleOf: car.size)
+        car.physicsBody?.mass = 0.5
         car.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Car
         car.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         car.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Ground | GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp
@@ -48,8 +61,9 @@ class Car {
         scene.addChild(car)
         body = car
         
-        let top = SKSpriteNode(color: SKColor.red, size: CGSize(width: 100, height: 25))
-        top.position = topPos + car.position
+        let top = SKSpriteNode(imageNamed:"Guy")
+        top.size = CGSize(width: top.size.width/scale, height: top.size.height/scale)
+        top.position = guyOffset + car.position
         top.physicsBody = SKPhysicsBody(rectangleOf: top.size)
         top.physicsBody!.categoryBitMask = GameData.PhysicsCategory.CarTop
         top.physicsBody!.collisionBitMask = GameData.PhysicsCategory.None
@@ -60,38 +74,43 @@ class Car {
         scene.addChild(top)
         self.top = top
         
-        let lWheel = SKShapeNode(circleOfRadius: 30)
-        let line = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
-        line.lineWidth = 4
-        line.position = lWheel.position
-        line.position.y -= 15
+        let lWheel = SKSpriteNode(imageNamed: "wheel")
+        lWheel.size = CGSize(width: lWheel.size.width/scale, height: lWheel.size.height/scale)
+//        let line = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
+//        line.lineWidth = 4
+//        line.position = lWheel.position
+//        line.position.y -= 15
         
-        lWheel.lineWidth = 4
+//        lWheel.lineWidth = 4
         lWheel.name = "drive"
-        lWheel.addChild(line)
-        lWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        lWheel.position = CGPoint(x:car.position.x-80,y:car.position.y-15)
+//        lWheel.addChild(line)
+        lWheel.physicsBody = SKPhysicsBody(circleOfRadius: lWheel.size.width/2)
+        lWheel.position = car.position + lWheelOffset
+        lWheel.physicsBody?.mass = 0.5
         lWheel.physicsBody?.friction = tireFriction
         lWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         lWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         lWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
         lWheel.physicsBody!.usesPreciseCollisionDetection = true
         
-        let rWheel = SKShapeNode(circleOfRadius: 30)
-        let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
-        rline.lineWidth = 4
-        rline.position = rWheel.position;
-        rline.position.y -= 15
-        rWheel.addChild(rline)
+        let rWheel = SKSpriteNode(imageNamed: "wheel")
+        rWheel.size = CGSize(width: rWheel.size.width/scale, height: rWheel.size.height/scale)
         
-        rWheel.physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        rWheel.position = CGPoint(x:car.position.x+80,y:car.position.y-15)
+//        let rline = SKShapeNode(rectOf: CGSize(width: 4, height: 30))
+//        rline.lineWidth = 4
+//        rline.position = rWheel.position;
+//        rline.position.y -= 15
+//        rWheel.addChild(rline)
+        
+        rWheel.physicsBody = SKPhysicsBody(circleOfRadius: rWheel.size.width/2)
+        rWheel.position = car.position + rWheelOffset
+        rWheel.physicsBody?.mass = 0.5
         rWheel.physicsBody?.friction = tireFriction
         rWheel.physicsBody!.categoryBitMask = GameData.PhysicsCategory.Wheels
         rWheel.physicsBody!.collisionBitMask = GameData.PhysicsCategory.Ground
         rWheel.physicsBody!.contactTestBitMask = GameData.PhysicsCategory.Finish | GameData.PhysicsCategory.PickUp | GameData.PhysicsCategory.Ground
         rWheel.physicsBody!.usesPreciseCollisionDetection = true
-        rWheel.lineWidth = 4
+//        rWheel.lineWidth = 4
         
         scene.addChild(lWheel)
         scene.addChild(rWheel)
