@@ -25,6 +25,7 @@
 		3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */; };
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
+		633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 633737461DE1276F008CE733 /* PickupEmitter.sks */; };
 		635825391DDCE44D00FC689D /* Dirt.sks in Resources */ = {isa = PBXBuildFile; fileRef = 635825371DDCE44D00FC689D /* Dirt.sks */; };
 		6358253A1DDCE44D00FC689D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 635825381DDCE44D00FC689D /* spark.png */; };
 		636E067E1DDC365900D44E23 /* CoinNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636E067D1DDC365900D44E23 /* CoinNode.sks */; };
@@ -38,8 +39,7 @@
 		FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8001DD41D34009EEDE8 /* Car.swift */; };
 		FAA0D8051DDA2596009EEDE8 /* CoinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */; };
 		FAA0D8101DDD6CCE009EEDE8 /* repeater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAA0D80F1DDD6CCE009EEDE8 /* repeater.mp3 */; };
-		FAA0D8141DE1DCAC009EEDE8 /* PickupEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAA0D8131DE1DCAC009EEDE8 /* PickupEmitter.sks */; };
-		FAA0D8161DE1E1E2009EEDE8 /* coin-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = FAA0D8151DE1E1E2009EEDE8 /* coin-drop.wav */; };
+		FAA0D8181DE1EE38009EEDE8 /* coin-drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = FAA0D8171DE1EE38009EEDE8 /* coin-drop.wav */; };
 		FACB77FD1DD01D9A00DFCD77 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */; };
 		FACB77FE1DD01D9A00DFCD77 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */; };
 		FACB77FF1DD01D9A00DFCD77 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */; };
@@ -66,6 +66,7 @@
 		3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		633737461DE1276F008CE733 /* PickupEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PickupEmitter.sks; sourceTree = "<group>"; };
 		635825371DDCE44D00FC689D /* Dirt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dirt.sks; sourceTree = "<group>"; };
 		635825381DDCE44D00FC689D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		636E067D1DDC365900D44E23 /* CoinNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinNode.sks; sourceTree = "<group>"; };
@@ -79,8 +80,7 @@
 		FAA0D8001DD41D34009EEDE8 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinNode.swift; sourceTree = "<group>"; };
 		FAA0D80F1DDD6CCE009EEDE8 /* repeater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = repeater.mp3; sourceTree = "<group>"; };
-		FAA0D8131DE1DCAC009EEDE8 /* PickupEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PickupEmitter.sks; sourceTree = "<group>"; };
-		FAA0D8151DE1E1E2009EEDE8 /* coin-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "coin-drop.wav"; sourceTree = "<group>"; };
+		FAA0D8171DE1EE38009EEDE8 /* coin-drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "coin-drop.wav"; sourceTree = "<group>"; };
 		FACB77FA1DD01D9A00DFCD77 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FB1DD01D9A00DFCD77 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		FACB77FC1DD01D9A00DFCD77 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			children = (
 				635825371DDCE44D00FC689D /* Dirt.sks */,
 				635825381DDCE44D00FC689D /* spark.png */,
-				FAA0D8131DE1DCAC009EEDE8 /* PickupEmitter.sks */,
+				633737461DE1276F008CE733 /* PickupEmitter.sks */,
 			);
 			name = Emitter;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				FAA0D80F1DDD6CCE009EEDE8 /* repeater.mp3 */,
-				FAA0D8151DE1E1E2009EEDE8 /* coin-drop.wav */,
+				FAA0D8171DE1EE38009EEDE8 /* coin-drop.wav */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -314,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FB8FAE31DD0001E0038C5D5 /* Main.storyboard in Resources */,
-				FAA0D8161DE1E1E2009EEDE8 /* coin-drop.wav in Resources */,
 				3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */,
 				3FB8FAE51DD0001F0038C5D5 /* Assets.xcassets in Resources */,
 				3FB8FB021DD024940038C5D5 /* HomeScene.sks in Resources */,
@@ -326,12 +325,13 @@
 				636F69E61DD9123100761F79 /* MotionControl-BoldItalic.otf in Resources */,
 				635825391DDCE44D00FC689D /* Dirt.sks in Resources */,
 				FAA0D8101DDD6CCE009EEDE8 /* repeater.mp3 in Resources */,
+				FAA0D8181DE1EE38009EEDE8 /* coin-drop.wav in Resources */,
 				3FB8FAF31DD004550038C5D5 /* Level1.sks in Resources */,
 				3FB8FADC1DD0001E0038C5D5 /* Actions.sks in Resources */,
 				3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */,
 				3FB8FB041DD025330038C5D5 /* LevelFinishScene.sks in Resources */,
 				636F69E51DD9123100761F79 /* MotionControl-Bold.otf in Resources */,
-				FAA0D8141DE1DCAC009EEDE8 /* PickupEmitter.sks in Resources */,
+				633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */,
 				6358253A1DDCE44D00FC689D /* spark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
