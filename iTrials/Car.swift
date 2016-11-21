@@ -31,7 +31,7 @@ class Car {
         }
     }    
     private let torque:CGFloat = 5
-    private let liftForce:CGFloat = 1000
+    private let liftForce:CGFloat = 700
     private let tireFriction:CGFloat = 100
     private let speedAndForceThreshold:CGFloat = 10000
     
