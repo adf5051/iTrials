@@ -30,8 +30,8 @@ class Car {
             return self.car
         }
     }    
-    private let torque:CGFloat = 3
-    private let liftForce:CGFloat = 500
+    private let torque:CGFloat = 5
+    private let liftForce:CGFloat = 1000
     private let tireFriction:CGFloat = 100
     private let speedAndForceThreshold:CGFloat = 10000
     
