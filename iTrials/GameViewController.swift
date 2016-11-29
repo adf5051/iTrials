@@ -52,6 +52,16 @@ class GameViewController: UIViewController, SceneManager {
         MotionMonitor.sharedMotionMonitor.startUpdates()
     }
     
+    func loadInstructScene() {
+        
+        let scene = InstructScene.loadLevel(size:screenSize,scaleMode: scaleMode, sceneManager: self)
+        
+        let reveal = SKTransition.crossFade(withDuration: 1)
+        skView.presentScene(scene!, transition: reveal)
+        
+        MotionMonitor.sharedMotionMonitor.stopUpdates()
+    }
+    
     func loadLevelFinishScene(results: LevelResults){
         
         gameScene = nil
@@ -71,7 +81,7 @@ class GameViewController: UIViewController, SceneManager {
     }
     
     func loadCreditsScene() {
-        //TODO: - needs implementation -
+        loadInstructScene()
     }
     
     // MARK - Notifications -

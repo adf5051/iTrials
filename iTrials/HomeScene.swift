@@ -47,6 +47,16 @@ class HomeScene: SKScene {
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         addChild(button)
         
+        let insButtonNode = SKSpriteNode(imageNamed: "Instruction_button")
+        
+        let insButton:Button = Button(insButtonNode)
+        insButton.setup()
+        insButton.position = CGPoint(x: button.position.x, y: button.position.y - 150)
+        insButton.subscribeToRelease(funcName: "onInstructionPressed", callback: onInstructionPressed)
+        insButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        insButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
+        addChild(insButton)
+        
 //        let label:SKLabelNode = SKLabelNode(fontNamed: GameData.Font.mainFont)
 //        label.text = "Start"
 //        label.position = button.position
@@ -58,6 +68,10 @@ class HomeScene: SKScene {
     
     func onPlayGamePressed() {
         sceneManager.loadGameScene(levelNum: 1, totalScore: 0)
+    }
+    
+    func onInstructionPressed(){
+        sceneManager.loadCreditsScene()
     }
     
     // TODO: change this to be work when a bitton is hit maybe
