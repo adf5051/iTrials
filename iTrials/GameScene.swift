@@ -338,6 +338,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
             buttonNode = SKSpriteNode(imageNamed: "Continue")
         }
 
+        buttonNode.setScale(1.5)
+        
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
@@ -377,7 +379,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
 //        camera?.addChild(nextLabel)
 
         let buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
-
+        buttonNode.setScale(1.5)
 
         //label and buttons
         let button:Button = Button(buttonNode)
