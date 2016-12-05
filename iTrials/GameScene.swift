@@ -38,7 +38,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
     var car:Car!
     var carTop: SKSpriteNode!
 
-    var playableRect:CGRect!
+    var playableRect:CGRect = CGRect.zero
 
     // MARK: - Initialization -
     class func loadLevel(_ levelNum: Int, size: CGSize, scaleMode:SKSceneScaleMode, totalScore: Int, sceneManager:SceneManager) -> GameScene?{
@@ -48,7 +48,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         scene.size = size
         scene.scaleMode = scaleMode
         scene.sceneManager = sceneManager
-        scene.playableRect = GameData.getPlayableRect(game: scene)
+        scene.playableRect = getPlayableRectPhonePortrait(size: size)
         return scene
     }
 
@@ -180,6 +180,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
 
     private func setupUI(){
         scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
+        scoreLabel.position = CGPoint(x: 10 - (playableRect.maxX / 2) + (scoreLabel.frame.width / 2), y: (playableRect.maxY / 2) - (scoreLabel.frame.height / 2) - 10)
         scoreLabel?.fontName = GameData.Font.mainFont
 
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")

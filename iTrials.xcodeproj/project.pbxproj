@@ -26,6 +26,7 @@
 		3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */; };
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
+		632DE56C1DF52E3B003FEA65 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632DE56B1DF52E3B003FEA65 /* MyUtils.swift */; };
 		633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 633737461DE1276F008CE733 /* PickupEmitter.sks */; };
 		635825391DDCE44D00FC689D /* Dirt.sks in Resources */ = {isa = PBXBuildFile; fileRef = 635825371DDCE44D00FC689D /* Dirt.sks */; };
 		6358253A1DDCE44D00FC689D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 635825381DDCE44D00FC689D /* spark.png */; };
@@ -70,6 +71,7 @@
 		3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		632DE56B1DF52E3B003FEA65 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		633737461DE1276F008CE733 /* PickupEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PickupEmitter.sks; sourceTree = "<group>"; };
 		635825371DDCE44D00FC689D /* Dirt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dirt.sks; sourceTree = "<group>"; };
 		635825381DDCE44D00FC689D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		3FB8FAF01DD000700038C5D5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				632DE56B1DF52E3B003FEA65 /* MyUtils.swift */,
 				3F51DCA71DF37A2200DCE967 /* SKTGameController.swift */,
 				3FB8FAFB1DD0117F0038C5D5 /* MotionMonitor.swift */,
 				3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */,
@@ -368,6 +371,7 @@
 				3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */,
 				3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */,
 				3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */,
+				632DE56C1DF52E3B003FEA65 /* MyUtils.swift in Sources */,
 				FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */,
 				3F51DCA81DF37A2200DCE967 /* SKTGameController.swift in Sources */,
 				3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */,
