@@ -180,7 +180,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
 
     private func setupUI(){
         scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
-        scoreLabel.position = CGPoint(x: 10 - (playableRect.maxX / 2) + (scoreLabel.frame.width / 2), y: (playableRect.maxY / 2) - (scoreLabel.frame.height / 2) - 10)
+        scoreLabel.position = CGPoint(x: 10 - (playableRect.maxX / 2) + (scoreLabel.frame.size.width / 2), y: (playableRect.maxY / 2) - (scoreLabel.frame.size.height / 2) - 10)
         scoreLabel?.fontName = GameData.Font.mainFont
 
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
@@ -194,8 +194,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         let brakeButton = Button(brakeSprite)
 
         //this will need to change to adapt to the origin of the scene later
-        gasButton.position = CGPoint(x: size.width/2-gasSprite.size.width, y: -size.height/2 + gasSprite.size.height/2)
-        brakeButton.position = CGPoint(x: -size.width/2 + brakeSprite.size.width, y: -size.height/2 + brakeSprite.size.height/2)
+        gasButton.position = CGPoint(x: (playableRect.maxX / 3), y: -(playableRect.maxY / 2) + gasSprite.size.height/2)
+        brakeButton.position = CGPoint(x: -(playableRect.maxX / 3), y: -(playableRect.maxY / 2) + brakeSprite.size.height/2)
 
         gasButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedalPressed"))
         brakeButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedalPressed"))

@@ -40,17 +40,27 @@ class HomeScene: SKScene {
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 600)
+        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 300)
         button.subscribeToRelease(funcName: "onPlayGamePressed", callback: onPlayGamePressed)
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         addChild(button)
         
+        let levelSelectButtonNode = SKSpriteNode(imageNamed: "EnterGame")
+        
+        let levelSelectButton:Button = Button(levelSelectButtonNode)
+        levelSelectButton.setup();
+        levelSelectButton.position = CGPoint(x: size.width/2 + 30, y: button.position.y - 150)
+        levelSelectButton.subscribeToRelease(funcName: "onLevelSelectPressed", callback: onLevelSelectPressed)
+        levelSelectButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        levelSelectButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
+        addChild(levelSelectButton)
+        
         let insButtonNode = SKSpriteNode(imageNamed: "Instruction_button")
         
         let insButton:Button = Button(insButtonNode)
         insButton.setup()
-        insButton.position = CGPoint(x: button.position.x, y: button.position.y - 150)
+        insButton.position = CGPoint(x: button.position.x, y: button.position.y - 300)
         insButton.subscribeToRelease(funcName: "onInstructionPressed", callback: onInstructionPressed)
         insButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         insButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
@@ -71,6 +81,10 @@ class HomeScene: SKScene {
     
     func onInstructionPressed(){
         sceneManager.loadCreditsScene()
+    }
+    
+    func onLevelSelectPressed(){
+        //sceneManager.loadLevelSelectScene()
     }
     
     // TODO: change this to be work when a bitton is hit maybe

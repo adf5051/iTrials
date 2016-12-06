@@ -21,6 +21,9 @@ struct GameData {
     
     struct Game {
         static let maxLevel = 3
+        static var level1:Level = Level(levelNum: 1)
+        static var level2:Level = Level(levelNum: 2)
+        static var level3:Level = Level(levelNum: 3)
     }
     
     struct PhysicsCategory {
