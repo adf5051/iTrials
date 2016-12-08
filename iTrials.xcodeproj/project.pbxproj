@@ -114,6 +114,7 @@
 		3F995FCF1DD2DE18003C5788 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				63F8EA9A1DF6815400CF59A5 /* Level.swift */,
 				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
 				FAA0D8001DD41D34009EEDE8 /* Car.swift */,
 				FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */,
@@ -175,7 +176,6 @@
 				3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */,
 				3FB8FAF61DD00D150038C5D5 /* LevelResults.swift */,
 				63B82E741DD909E00075B77B /* GameData.swift */,
-				63F8EA9A1DF6815400CF59A5 /* Level.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";

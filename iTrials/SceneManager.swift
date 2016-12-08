@@ -15,4 +15,5 @@ protocol SceneManager {
     func loadLevelFinishScene(results:LevelResults)
     func loadGameOverScene(results:LevelResults)
     func loadCreditsScene()
+    func loadLevelSelectScene()
 }

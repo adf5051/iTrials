@@ -46,7 +46,7 @@ class HomeScene: SKScene {
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         addChild(button)
         
-        let levelSelectButtonNode = SKSpriteNode(imageNamed: "EnterGame")
+        let levelSelectButtonNode = SKSpriteNode(imageNamed: "LevelSelectButton")
         
         let levelSelectButton:Button = Button(levelSelectButtonNode)
         levelSelectButton.setup();
@@ -84,7 +84,7 @@ class HomeScene: SKScene {
     }
     
     func onLevelSelectPressed(){
-        //sceneManager.loadLevelSelectScene()
+        sceneManager.loadLevelSelectScene()
     }
     
     // TODO: change this to be work when a bitton is hit maybe
