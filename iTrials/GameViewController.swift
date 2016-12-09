@@ -80,6 +80,14 @@ class GameViewController: UIViewController, SceneManager {
         skView.presentScene(scene!, transition: reveal)
     }
     
+    func loadLevelSelectScene() {
+        
+        let scene = LevelSelectScene.loadLevel(size:screenSize,scaleMode: scaleMode, sceneManager: self)
+        
+        let reveal = SKTransition.crossFade(withDuration: 1)
+        skView.presentScene(scene!, transition: reveal)
+    }
+    
     func loadCreditsScene() {
         loadInstructScene()
     }

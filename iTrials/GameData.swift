@@ -21,6 +21,9 @@ struct GameData {
     
     struct Game {
         static let maxLevel = 3
+        static var level1:Level = Level(levelNum: 1)
+        static var level2:Level = Level(levelNum: 2)
+        static var level3:Level = Level(levelNum: 3)
     }
     
     struct PhysicsCategory {
@@ -41,14 +44,5 @@ struct GameData {
         static let hud          : CGFloat = 3
         static let sprite       : CGFloat = 4
         static let message      : CGFloat = 5
-    }
-    
-    static func getPlayableRect(game: GameScene) -> CGRect{
-        
-        // Calculate playable margin
-        let maxAspectRatio: CGFloat = 16.0/9.0
-        let maxAspectRatioHeight = game.size.width / maxAspectRatio
-        let playableMargin: CGFloat = (game.size.height - maxAspectRatioHeight)/2
-        return CGRect(x: 0, y: playableMargin, width: game.size.width, height: game.size.height-playableMargin*2)
     }
 }

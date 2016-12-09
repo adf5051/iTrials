@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F51DCA81DF37A2200DCE967 /* SKTGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51DCA71DF37A2200DCE967 /* SKTGameController.swift */; };
 		3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */; };
 		3FB8FADA1DD0001E0038C5D5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */; };
 		3FB8FADC1DD0001E0038C5D5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FADB1DD0001E0038C5D5 /* Actions.sks */; };
@@ -25,6 +26,7 @@
 		3FB8FB061DD0254D0038C5D5 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */; };
 		3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */; };
 		3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8FB091DD025810038C5D5 /* GameOverScene.swift */; };
+		632DE56C1DF52E3B003FEA65 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632DE56B1DF52E3B003FEA65 /* MyUtils.swift */; };
 		633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 633737461DE1276F008CE733 /* PickupEmitter.sks */; };
 		635825391DDCE44D00FC689D /* Dirt.sks in Resources */ = {isa = PBXBuildFile; fileRef = 635825371DDCE44D00FC689D /* Dirt.sks */; };
 		6358253A1DDCE44D00FC689D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 635825381DDCE44D00FC689D /* spark.png */; };
@@ -35,6 +37,9 @@
 		636F69E81DD91D7A00761F79 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E71DD91D7A00761F79 /* Level3.sks */; };
 		636F69EA1DD91D8800761F79 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 636F69E91DD91D8800761F79 /* Level2.sks */; };
 		63B82E751DD909E00075B77B /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B82E741DD909E00075B77B /* GameData.swift */; };
+		63F8EA971DF662C100CF59A5 /* LevelSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8EA961DF662C100CF59A5 /* LevelSelectScene.swift */; };
+		63F8EA991DF6639500CF59A5 /* LevelSelectScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63F8EA981DF6639500CF59A5 /* LevelSelectScene.sks */; };
+		63F8EA9B1DF6815400CF59A5 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8EA9A1DF6815400CF59A5 /* Level.swift */; };
 		63FCE2A61DE29B4F006DAAC3 /* IntructionsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 63FCE2A51DE29B4F006DAAC3 /* IntructionsScene.sks */; };
 		63FCE2A81DE29DE6006DAAC3 /* InstructScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FCE2A71DE29DE6006DAAC3 /* InstructScene.swift */; };
 		FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */; };
@@ -48,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F51DCA71DF37A2200DCE967 /* SKTGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTGameController.swift; sourceTree = "<group>"; };
 		3FB8FAD41DD0001E0038C5D5 /* iTrials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FB8FAD71DD0001E0038C5D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FB8FAD91DD0001E0038C5D5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 		3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFinishScene.swift; sourceTree = "<group>"; };
 		3FB8FB091DD025810038C5D5 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		632DE56B1DF52E3B003FEA65 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		633737461DE1276F008CE733 /* PickupEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PickupEmitter.sks; sourceTree = "<group>"; };
 		635825371DDCE44D00FC689D /* Dirt.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dirt.sks; sourceTree = "<group>"; };
 		635825381DDCE44D00FC689D /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -78,6 +85,9 @@
 		636F69E71DD91D7A00761F79 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
 		636F69E91DD91D8800761F79 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 		63B82E741DD909E00075B77B /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		63F8EA961DF662C100CF59A5 /* LevelSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectScene.swift; sourceTree = "<group>"; };
+		63F8EA981DF6639500CF59A5 /* LevelSelectScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelectScene.sks; sourceTree = "<group>"; };
+		63F8EA9A1DF6815400CF59A5 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		63FCE2A51DE29B4F006DAAC3 /* IntructionsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IntructionsScene.sks; sourceTree = "<group>"; };
 		63FCE2A71DE29DE6006DAAC3 /* InstructScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructScene.swift; sourceTree = "<group>"; };
 		FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 		3F995FCF1DD2DE18003C5788 /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				63F8EA9A1DF6815400CF59A5 /* Level.swift */,
 				FA9AB5DD1DD0E0A9006CEBAC /* Button.swift */,
 				FAA0D8001DD41D34009EEDE8 /* Car.swift */,
 				FAA0D8041DDA2596009EEDE8 /* CoinNode.swift */,
@@ -159,6 +170,8 @@
 		3FB8FAF01DD000700038C5D5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				632DE56B1DF52E3B003FEA65 /* MyUtils.swift */,
+				3F51DCA71DF37A2200DCE967 /* SKTGameController.swift */,
 				3FB8FAFB1DD0117F0038C5D5 /* MotionMonitor.swift */,
 				3FB8FAF41DD00C620038C5D5 /* SceneManager.swift */,
 				3FB8FAF61DD00D150038C5D5 /* LevelResults.swift */,
@@ -175,6 +188,7 @@
 				3FB8FB071DD025730038C5D5 /* LevelFinishScene.swift */,
 				3FB8FB091DD025810038C5D5 /* GameOverScene.swift */,
 				63FCE2A71DE29DE6006DAAC3 /* InstructScene.swift */,
+				63F8EA961DF662C100CF59A5 /* LevelSelectScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 				3FB8FB031DD025330038C5D5 /* LevelFinishScene.sks */,
 				3FB8FB051DD0254D0038C5D5 /* GameOverScene.sks */,
 				63FCE2A51DE29B4F006DAAC3 /* IntructionsScene.sks */,
+				63F8EA981DF6639500CF59A5 /* LevelSelectScene.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -291,7 +306,7 @@
 				TargetAttributes = {
 					3FB8FAD31DD0001E0038C5D5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = ZXGJUD78UK;
+						DevelopmentTeam = 86QCP25DMS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -340,6 +355,7 @@
 				636F69E51DD9123100761F79 /* MotionControl-Bold.otf in Resources */,
 				633737471DE1276F008CE733 /* PickupEmitter.sks in Resources */,
 				6358253A1DDCE44D00FC689D /* spark.png in Resources */,
+				63F8EA991DF6639500CF59A5 /* LevelSelectScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,10 +378,14 @@
 				FAA0D8051DDA2596009EEDE8 /* CoinNode.swift in Sources */,
 				FAA0D8011DD41D34009EEDE8 /* Car.swift in Sources */,
 				3FB8FAF51DD00C620038C5D5 /* SceneManager.swift in Sources */,
+				63F8EA971DF662C100CF59A5 /* LevelSelectScene.swift in Sources */,
 				3FB8FAF71DD00D150038C5D5 /* LevelResults.swift in Sources */,
 				3FB8FB081DD025730038C5D5 /* LevelFinishScene.swift in Sources */,
+				63F8EA9B1DF6815400CF59A5 /* Level.swift in Sources */,
 				3FB8FB0A1DD025810038C5D5 /* GameOverScene.swift in Sources */,
+				632DE56C1DF52E3B003FEA65 /* MyUtils.swift in Sources */,
 				FA9AB5DE1DD0E0A9006CEBAC /* Button.swift in Sources */,
+				3F51DCA81DF37A2200DCE967 /* SKTGameController.swift in Sources */,
 				3FB8FAD81DD0001E0038C5D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,14 +509,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZXGJUD78UK;
+				DEVELOPMENT_TEAM = 86QCP25DMS;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject2.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -504,14 +524,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZXGJUD78UK;
+				DEVELOPMENT_TEAM = 86QCP25DMS;
 				INFOPLIST_FILE = iTrials/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject.iTrials;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosproject2.iTrials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

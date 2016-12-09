@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
+class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, SKTGameControllerDelegate {
 
     var scoreLabel: SKLabelNode!
     var dirtEmitter: SKEmitterNode!
@@ -38,7 +38,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     var car:Car!
     var carTop: SKSpriteNode!
 
-    var playableRect:CGRect!
+    var playableRect:CGRect = CGRect.zero
 
     // MARK: - Initialization -
     class func loadLevel(_ levelNum: Int, size: CGSize, scaleMode:SKSceneScaleMode, totalScore: Int, sceneManager:SceneManager) -> GameScene?{
@@ -48,7 +48,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         scene.size = size
         scene.scaleMode = scaleMode
         scene.sceneManager = sceneManager
-        scene.playableRect = GameData.getPlayableRect(game: scene)
+        scene.playableRect = getPlayableRectPhonePortrait(size: size)
         return scene
     }
 
@@ -61,6 +61,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         music.run(SKAction.changeVolume(to: 0.15, duration: 0))
         setupUI()
         setupSpritesAndPhysics()
+        SKTGameController.sharedInstance.delegate = self
     }
 
     func touchDown(atPoint pos : CGPoint) {
@@ -84,6 +85,29 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
+    //MARK - Controller events -
+    func buttonEvent(event: String, velocity: Float, pushedOn: Bool) {
+        print("\(event): velocity=\(velocity), pushedOn=\(pushedOn)")
+        
+        if event == "rightTrigger" && pushedOn{
+            onGasPressed()
+        }
+        else {
+            onGasReleased()
+        }
+        
+        if event == "leftTrigger" && pushedOn{
+            onBrakePressed()
+        }
+        else {
+            onBrakeReleased()
+        }
+    }
+    
+    func stickEvent(event: String, point: CGPoint) {
+        print("\(event): point=\(point)")
+        
+    }
 
     override func update(_ currentTime: TimeInterval) {
 
@@ -156,6 +180,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
 
     private func setupUI(){
         scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
+        scoreLabel.position = CGPoint(x: 10 - (playableRect.maxX / 2) + (scoreLabel.frame.size.width / 2), y: (playableRect.maxY / 2) - (scoreLabel.frame.size.height / 2) - 10)
         scoreLabel?.fontName = GameData.Font.mainFont
 
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
@@ -169,8 +194,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
         let brakeButton = Button(brakeSprite)
 
         //this will need to change to adapt to the origin of the scene later
-        gasButton.position = CGPoint(x: size.width/2-gasSprite.size.width, y: -size.height/2 + gasSprite.size.height/2)
-        brakeButton.position = CGPoint(x: -size.width/2 + brakeSprite.size.width, y: -size.height/2 + brakeSprite.size.height/2)
+        gasButton.position = CGPoint(x: (playableRect.maxX / 3), y: -(playableRect.maxY / 2) + gasSprite.size.height/2)
+        brakeButton.position = CGPoint(x: -(playableRect.maxX / 3), y: -(playableRect.maxY / 2) + brakeSprite.size.height/2)
 
         gasButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "GasPedalPressed"))
         brakeButton.pressAnimation = SKAction.setTexture(SKTexture(imageNamed: "BrakePedalPressed"))
