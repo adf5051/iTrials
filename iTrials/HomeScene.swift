@@ -50,16 +50,18 @@ class HomeScene: SKScene {
         addChild(button)
         
         let levelSelectButtonNode = SKSpriteNode(imageNamed: "LevelSelectButton")
+        levelSelectButtonNode.setScale(1.5)
         
         let levelSelectButton:Button = Button(levelSelectButtonNode)
         levelSelectButton.setup();
-        levelSelectButton.position = CGPoint(x: size.width/2 + 30, y: button.position.y - 150)
+        levelSelectButton.position = CGPoint(x: size.width/2, y: button.position.y - 150)
         levelSelectButton.subscribeToRelease(funcName: "onLevelSelectPressed", callback: onLevelSelectPressed)
         levelSelectButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         levelSelectButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         addChild(levelSelectButton)
         
         let insButtonNode = SKSpriteNode(imageNamed: "Instruction_button")
+        insButtonNode.setScale(1.5)
         
         let insButton:Button = Button(insButtonNode)
         insButton.setup()
