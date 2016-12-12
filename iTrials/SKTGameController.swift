@@ -192,6 +192,11 @@ class SKTGameController {
           self.delegate!.buttonEvent(event: "buttonA", velocity: value, pushedOn: pressed)
         }
       }
+        extendedPad.buttonY.valueChangedHandler = { button, value, pressed in
+            if self.delegate != nil {
+                self.delegate!.buttonEvent(event: "buttonY", velocity: value, pushedOn: pressed)
+            }
+        }
       //2
       extendedPad.leftThumbstick.valueChangedHandler = { dpad, xValue, yValue in
         if self.delegate != nil {

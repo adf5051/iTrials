@@ -42,7 +42,7 @@ class HomeScene: SKScene {
         let button:Button = Button(buttonNode)
         button.setup();
 
-        button.position = CGPoint(x: size.width/2, y: size.width/2 - 600)
+        button.position = CGPoint(x: size.width/2, y: size.width/2 - 400)
 
         button.subscribeToRelease(funcName: "onPlayGamePressed", callback: onPlayGamePressed)
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)

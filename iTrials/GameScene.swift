@@ -12,6 +12,9 @@ import GameplayKit
 class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, SKTGameControllerDelegate {
 
     var scoreLabel: SKLabelNode!
+    var pause_MenuButton:Button!
+    var pause_resumeButton:Button!
+    var pause_restartButton:Button!
     var dirtEmitter: SKEmitterNode!
 
     var levelNum:Int = 1
@@ -89,6 +92,10 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
     func buttonEvent(event: String, velocity: Float, pushedOn: Bool) {
         print("\(event): velocity=\(velocity), pushedOn=\(pushedOn)")
         
+        if event == "buttonY" && !pushedOn{
+            onRestartReleased()
+        }
+        
         if event == "rightTrigger" && pushedOn{
             onGasPressed()
         }
@@ -127,6 +134,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
     private func runPauseAction(){
         physicsWorld.speed = 0.0
         spritesMoving = false
+        pause_MenuButton.isHidden = false
+        pause_resumeButton.isHidden = false
+        pause_restartButton.isHidden = false
 
         let fadeAction = SKAction.customAction(withDuration: 0.25,
             actionBlock:{
@@ -135,6 +145,9 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
                 let percentDone = elapsedTime/totalAnimationTime
                 let amountToFade:CGFloat = 0.5
                 node.alpha = 1.0 - (percentDone * amountToFade)
+                self.pause_MenuButton.alpha = (percentDone * 3.0)
+                self.pause_resumeButton.alpha = (percentDone * 3.0)
+                self.pause_restartButton.alpha = (percentDone * 3.0)
             })
 
         let pauseAction = SKAction.run({
@@ -146,6 +159,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
             pauseAction])
 
         run(pauseViewAfterFadeAction)
+        
     }
 
     private func runUnpauseAction(){
@@ -164,6 +178,24 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
             ])
         unPauseAction.timingMode = .easeIn
         run(unPauseAction)
+        pause_MenuButton.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 1.0),
+            SKAction.run({
+                self.pause_MenuButton.isHidden = true
+            })
+            ]))
+        pause_resumeButton.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 1.0),
+            SKAction.run({
+                self.pause_resumeButton.isHidden = true
+            })
+            ]))
+        pause_restartButton.run(SKAction.sequence([
+            SKAction.fadeOut(withDuration: 1.0),
+            SKAction.run({
+                self.pause_restartButton.isHidden = true
+            })
+            ]))
     }
 
     //MARK: - Helpers -
@@ -182,6 +214,34 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         scoreLabel = childNode(withName: "//scoreLabel") as! SKLabelNode!
         scoreLabel.position = CGPoint(x: 10 - (playableRect.maxX / 2) + (scoreLabel.frame.size.width / 2), y: (playableRect.maxY / 2) - (scoreLabel.frame.size.height / 2) - 10)
         scoreLabel?.fontName = GameData.Font.mainFont
+        
+        let menuNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        menuNode.setScale(1.5)
+        pause_MenuButton = Button(menuNode)
+        pause_MenuButton.position = CGPoint(x: 0, y: -150)
+        pause_MenuButton.subscribeToRelease(funcName: "onMenuReleased", callback: onMenuReleased)
+        camera?.addChild(pause_MenuButton)
+        pause_MenuButton.isHidden = true
+        pause_MenuButton.alpha = 0.0
+        
+        //these images need to be updated
+        let resumeNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        resumeNode.setScale(1.5)
+        pause_resumeButton = Button(resumeNode)
+        pause_resumeButton.position = CGPoint(x: 0, y: 150)
+        pause_resumeButton.subscribeToRelease(funcName: "onPauseReleased", callback: onPauseReleased)
+        camera?.addChild(pause_resumeButton)
+        pause_resumeButton.isHidden = true
+        pause_resumeButton.alpha = 0.0
+        
+        let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        restartNode.setScale(1.5)
+        pause_restartButton = Button(restartNode)
+        pause_restartButton.position = CGPoint(x: 0, y: 0)
+        pause_restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
+        camera?.addChild(pause_restartButton)
+        pause_restartButton.isHidden = true
+        pause_restartButton.alpha = 0.0
 
         let gasSprite = SKSpriteNode(imageNamed: "GasPedal")
         gasSprite.xScale = 1.5
@@ -216,14 +276,32 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         restartSprite.setScale(0.5)
         let restartButton = Button(restartSprite);
         restartButton.position = CGPoint(x:size.width/2-restartSprite.size.width, y: size.height/2 - restartSprite.size.height/2)
-        restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
+        restartButton.subscribeToRelease(funcName: "onPauseReleased", callback: onPauseReleased)
+        //something about pausing and unpausing seems to reset the scale of this sprite
+        //I changed the release action scale from 1.0 to 0.5 and it fixed it
         restartButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.2)
-        restartButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.2)
+        restartButton.releaseAnimation = SKAction.scale(to: 0.5, duration: 0.2)
 
         camera?.addChild(restartButton)
     }
+    
+    private func onMenuReleased(){
+        runUnpauseAction()
+        sceneManager.loadHomeScene()
+    }
 
-    private func onRestartReleased() {
+    private func onPauseReleased() {
+        if !gameOver{
+            if self.isPaused{
+                runUnpauseAction()
+            }else{
+                runPauseAction()
+            }
+        }
+    }
+    
+    private func onRestartReleased(){
+        runUnpauseAction()
         sceneManager.loadGameScene(levelNum: levelNum, totalScore: 0)
     }
 
@@ -335,7 +413,25 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         //show win screen
         print("Win!!")
         gameOver = true
-
+        
+        switch levelNum{
+        case 4:
+            GameData.Game.level4.completed = true
+            break
+        case 3:
+            GameData.Game.level3.completed = true
+            GameData.Game.level4.locked = false
+            break
+        case 2:
+            GameData.Game.level2.completed = true
+            GameData.Game.level3.locked = false
+            break
+        default:
+            GameData.Game.level1.completed = true
+            GameData.Game.level2.locked = false
+            break
+        }
+        
         let winLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
 
         if(levelNum == GameData.Game.maxLevel){
@@ -354,7 +450,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         //let nextLabel = SKLabelNode(fontNamed: GameData.Font.mainFont)
 
         var buttonNode:SKSpriteNode
-
+        let mainButtonNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        
         if(levelNum == GameData.Game.maxLevel){
             //nextLabel.text = "Quit"
             buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
@@ -375,11 +472,20 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         }
         else{
             button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
+            mainButtonNode.setScale(1.5)
+            let mainButton = Button(mainButtonNode)
+            mainButton.position = CGPoint(x: button.position.x, y: button.position.y - 150)
+            mainButton.subscribeToRelease(funcName: "homeScene", callback: homeScene)
+            mainButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+            mainButton.releaseAnimation = SKAction.scale(by: 1, duration: 0.5)
+            camera?.addChild(mainButton)
+            mainButton.zPosition = GameData.GameLayer.hud
         }
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
         button.zPosition = GameData.GameLayer.hud
         camera?.addChild(button)
+        
     }
 
     func lose(){
@@ -402,6 +508,18 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
 //        nextLabel.zPosition = GameData.GameLayer.message
 //
 //        camera?.addChild(nextLabel)
+        let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        restartNode.setScale(1.5)
+        
+        //label and buttons
+        let restartButton:Button = Button(restartNode)
+        restartButton.setup();
+        restartButton.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
+        restartButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        restartButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
+        restartButton.zPosition = GameData.GameLayer.hud
+        camera?.addChild(restartButton)
 
         let buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
         buttonNode.setScale(1.5)
@@ -409,7 +527,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 - 130)
         button.subscribeToRelease(funcName: "homeScene", callback: homeScene)
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
