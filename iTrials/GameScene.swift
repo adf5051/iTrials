@@ -216,6 +216,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         scoreLabel?.fontName = GameData.Font.mainFont
         
         let menuNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        menuNode.setScale(1.5)
         pause_MenuButton = Button(menuNode)
         pause_MenuButton.position = CGPoint(x: 0, y: -150)
         pause_MenuButton.subscribeToRelease(funcName: "onMenuReleased", callback: onMenuReleased)
@@ -225,6 +226,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         
         //these images need to be updated
         let resumeNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        resumeNode.setScale(1.5)
         pause_resumeButton = Button(resumeNode)
         pause_resumeButton.position = CGPoint(x: 0, y: 150)
         pause_resumeButton.subscribeToRelease(funcName: "onPauseReleased", callback: onPauseReleased)
@@ -233,6 +235,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         pause_resumeButton.alpha = 0.0
         
         let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        restartNode.setScale(1.5)
         pause_restartButton = Button(restartNode)
         pause_restartButton.position = CGPoint(x: 0, y: 0)
         pause_restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
@@ -456,6 +459,8 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         else{
             buttonNode = SKSpriteNode(imageNamed: "Continue")
         }
+
+        buttonNode.setScale(1.5)
         
         //label and buttons
         let button:Button = Button(buttonNode)
@@ -467,6 +472,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         }
         else{
             button.subscribeToRelease(funcName: "nextLevel", callback: nextLevel)
+            mainButtonNode.setScale(1.5)
             let mainButton = Button(mainButtonNode)
             mainButton.position = CGPoint(x: button.position.x, y: button.position.y - 150)
             mainButton.subscribeToRelease(funcName: "homeScene", callback: homeScene)
@@ -502,14 +508,26 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
 //        nextLabel.zPosition = GameData.GameLayer.message
 //
 //        camera?.addChild(nextLabel)
+        let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        restartNode.setScale(1.5)
+        
+        //label and buttons
+        let restartButton:Button = Button(restartNode)
+        restartButton.setup();
+        restartButton.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        restartButton.subscribeToRelease(funcName: "onRestartReleased", callback: onRestartReleased)
+        restartButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
+        restartButton.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
+        restartButton.zPosition = GameData.GameLayer.hud
+        camera?.addChild(restartButton)
 
         let buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
-
+        buttonNode.setScale(1.5)
 
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 + 20)
+        button.position = CGPoint(x: (camera?.frame.width)! / 2, y: (camera?.frame.height)! / 2 - 130)
         button.subscribeToRelease(funcName: "homeScene", callback: homeScene)
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)

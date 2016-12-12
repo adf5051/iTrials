@@ -36,11 +36,14 @@ class HomeScene: SKScene {
 //        buttonNode.fillColor = SKColor.black
         
         let buttonNode = SKSpriteNode(imageNamed: "EnterGame")
+        buttonNode.setScale(1.5)
         
         //label and buttons
         let button:Button = Button(buttonNode)
         button.setup();
-        button.position = CGPoint(x: size.width/2 + 30, y: size.width/2 - 300)
+
+        button.position = CGPoint(x: size.width/2, y: size.width/2 - 400)
+
         button.subscribeToRelease(funcName: "onPlayGamePressed", callback: onPlayGamePressed)
         button.pressAnimation = SKAction.scale(by: 0.9, duration: 0.5)
         button.releaseAnimation = SKAction.scale(to: 1, duration: 0.5)
