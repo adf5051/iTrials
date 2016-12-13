@@ -35,6 +35,7 @@ class HomeScene: SKScene {
 //        buttonNode.strokeColor = SKColor.red
 //        buttonNode.fillColor = SKColor.black
         
+        
         let buttonNode = SKSpriteNode(imageNamed: "EnterGame")
         buttonNode.setScale(1.5)
         

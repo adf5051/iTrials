@@ -25,6 +25,10 @@ class Car {
     private var car:SKSpriteNode
     private var top:SKNode
     
+    private var deltaRot:CGFloat = 0
+    private var lastRot:CGFloat = 0
+    private var totalRot:CGFloat = 0
+    
     var carNode:SKSpriteNode{
         get{
             return self.car
@@ -131,6 +135,21 @@ class Car {
 //        top.position = CGPoint.zero
 //        top.zRotation = body.zRotation
 //        top.position = topPos;
+        
+//        if(body.zRotation < 0) {
+//            let rot = body.zRotation + CGFloat(2 * M_PI)
+//            deltaRot = rot - lastRot
+//            lastRot = rot
+//        }else {
+//            deltaRot = body.zRotation - lastRot
+//            lastRot = body.zRotation
+//        }
+//        
+//        totalRot += deltaRot
+//        print(deltaRot)
+//        if(totalRot >= CGFloat(2 * M_PI)) {
+//            print(totalRot)
+//        }
     }
     
     private func scaleForceByVelocity() -> CGFloat {

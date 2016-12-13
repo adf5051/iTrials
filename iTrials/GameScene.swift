@@ -225,7 +225,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         pause_MenuButton.alpha = 0.0
         
         //these images need to be updated
-        let resumeNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        let resumeNode = SKSpriteNode(imageNamed: "Resume")
         resumeNode.setScale(1.5)
         pause_resumeButton = Button(resumeNode)
         pause_resumeButton.position = CGPoint(x: 0, y: 150)
@@ -234,7 +234,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         pause_resumeButton.isHidden = true
         pause_resumeButton.alpha = 0.0
         
-        let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        let restartNode = SKSpriteNode(imageNamed: "Restart")
         restartNode.setScale(1.5)
         pause_restartButton = Button(restartNode)
         pause_restartButton.position = CGPoint(x: 0, y: 0)
@@ -272,17 +272,17 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
         camera?.addChild(gasButton)
         camera?.addChild(brakeButton)
 
-        let restartSprite = SKSpriteNode(imageNamed: "redo")
-        restartSprite.setScale(0.5)
-        let restartButton = Button(restartSprite);
-        restartButton.position = CGPoint(x:size.width/2-restartSprite.size.width, y: size.height/2 - restartSprite.size.height/2)
-        restartButton.subscribeToRelease(funcName: "onPauseReleased", callback: onPauseReleased)
+        let pauseSprite = SKSpriteNode(imageNamed: "pause")
+        pauseSprite.setScale(1.5)
+        let pauseButton = Button(pauseSprite);
+        pauseButton.position = CGPoint(x:size.width/2-pauseSprite.size.width, y: size.height/2 - pauseSprite.size.height/2 - 50)
+        pauseButton.subscribeToRelease(funcName: "onPauseReleased", callback: onPauseReleased)
         //something about pausing and unpausing seems to reset the scale of this sprite
         //I changed the release action scale from 1.0 to 0.5 and it fixed it
-        restartButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.2)
-        restartButton.releaseAnimation = SKAction.scale(to: 0.5, duration: 0.2)
+        pauseButton.pressAnimation = SKAction.scale(by: 0.9, duration: 0.2)
+        pauseButton.releaseAnimation = SKAction.scale(to: 1.5, duration: 0.2)
 
-        camera?.addChild(restartButton)
+        camera?.addChild(pauseButton)
     }
     
     private func onMenuReleased(){
@@ -508,7 +508,7 @@ class GameScene: SKScene,UIGestureRecognizerDelegate, SKPhysicsContactDelegate, 
 //        nextLabel.zPosition = GameData.GameLayer.message
 //
 //        camera?.addChild(nextLabel)
-        let restartNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        let restartNode = SKSpriteNode(imageNamed: "Restart")
         restartNode.setScale(1.5)
         
         //label and buttons

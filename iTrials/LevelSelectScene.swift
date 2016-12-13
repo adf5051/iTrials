@@ -76,7 +76,7 @@ class LevelSelectScene: SKScene{
         }
         addChild(level3Button)
         
-        let level4ButtonNode = SKSpriteNode(imageNamed: "Level3Button")
+        let level4ButtonNode = SKSpriteNode(imageNamed: "Level4Button")
         
         let level4Button:Button = Button(level4ButtonNode)
         level4Button.position = CGPoint(x: 200, y: 100)

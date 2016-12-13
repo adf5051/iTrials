@@ -26,6 +26,7 @@ class InstructScene: SKScene{
     override func didMove(to view: SKView) {
         
         let buttonNode = SKSpriteNode(imageNamed: "ReturnToMain")
+        buttonNode.setScale(1.5)
         
         let button:Button = Button(buttonNode)
         button.setup()
